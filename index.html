@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loja Sabin</title>
+  <!-- 1. Importa a fonte Roboto do Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 2. Configura o Tailwind para usar a fonte Roboto (DEPOIS do CDN) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Roboto', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-white text-gray-900 font-sans">
+
+  <!-- 1. Cabeçalho -->
+      <div id="cablh" class=" relative inset-x-0 bg-white border-b border-gray-200 z-40 px-[222px] font-sans text-[12px] leading-5">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center px-4 py-[7px] text-sm text-gray-700">
+          <div class="flex flex-wrap gap-x-6">
+            <a href="https://sabin.com.br/unidade/brasilia-df/" class="text-black hover:text-red-600 text-[12px]">PORTAL SABIN</a>
+            <a href="https://laudos.sabin.com.br/shift/lis/sabin/elis/gestao/sabin.portal.login.csp" class="hover:text-red-700 text-[12px]">RESULTADO DE EXAMES</a>
+            <a href="https://blog.sabin.com.br/" class="text-black hover:text-red-600 text-[12px]">IR PARA O BLOG</a>
+          </div>
+
+          <!-- Container que agora se parece com um botão -->
+          <div id="seleEstado" class="relative flex items-center bg-gray-600 border border-gray-300 rounded-full text-white px-4 py-[5px] mt-2 sm:mt-0">
+            <span class="font-sans text-[14px] mr-1">Você está em</span>
+            <!-- Span que vai exibir o estado selecionado -->
+            <span id="estadoSelecionado" class="font-sans text-[14px]">Brasília - DF</span>
+            <!-- Ícone de seta para baixo -->
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+            <!-- Selecione um estado -->
+            <select id="seletorDeEstado" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer text-black">
+              <option selected>Brasília - DF</option>
+              <option>Goiás</option>
+              <option>Mato Grosso</option>
+              <option>Mato Grosso do Sul</option>
+              <option>Alagoas</option>
+              <option>Bahia</option>
+              <option>Ceará</option>
+              <option>Maranhão</option>
+              <option>Paraíba</option>
+              <option>Pernambuco</option>
+              <option>Piauí</option>
+              <option>Rio Grande do Norte</option>
+              <option>Sergipe</option>
+              <option>Acre</option>
+              <option>Amapá</option>
+              <option>Amazonas</option>
+              <option>Pará</option>
+              <option>Rondônia</option>
+              <option>Roraima</option>
+              <option>Tocantins</option>
+              <option>Espiríto Santo</option>
+              <option>Minas Gerais</option>
+              <option>Rio de Janeiro</option>
+              <option>São Paulo</option>
+            </select>
+          </div>
+        <div class="flex items-center gap-2">
+            <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2e7b01942021ff8be164fa7aac29d108.svg" alt="libras">
+            <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/10b294aa1d728b6901fa9c1834bcb9fc.svg" alt="troca cor do fundo">
+        </div>
+        </div>
+      </div>
+
+<!-- Banner principal (STICKY) -->
+    <section id="topbar" class="sticky top-0 z-50 bg-gray-100 w-full shadow-none transition-shadow duration-300">
+      <div class="w-full max-w-[1108px] mx-auto h-[70px] flex items-center justify-between px-0">
+        <!-- LOGO (esquerda) -->
+        <a href="https://loja.sabin.com.br/?___store=brasilia_df" class="flex items-center">
+          <img src="https://loja.sabin.com.br/media/favicon/default/Logo_-_vermelha-4k.png"
+              alt="sabin" class="w-[85px] h-auto" />
+        </a>
+
+
+
+          <!-- BUSCA (centro) -->
+        <header class="sticky top-0 z-20 bg-none transition-shadow duration-300">
+            <div class="relative inline-block mx-auto my-2">
+                <input
+                  type="text"
+                  placeholder="O que você procura?"
+                  class="w-[300px] rounded-full border border-gray-300 pl-4 pr-12 py-2 text-base text-black focus:outline-none focus:ring-1 focus:ring-gray-300"
+                />
+                <button
+                  type="button"
+                  aria-label="Buscar"
+                  class="absolute right-1 top-1/2 transform -translate-y-1/2 bg-red-500 hover:bg-red-600 text-white w-9 h-9 rounded-full flex items-center justify-center shadow-sm"
+                >
+                <img
+                  src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/30bcd5374a562c97bff97bfcf4ae5433.svg"
+                  alt="lupa"
+                  class="w-4 h-4"
+                />
+                  </button>
+            </div>
+        </header>
+
+
+
+
+
+    <!-- ÍCONES E CARRINHO (direita) -->
+    <div class="flex items-center gap-4">
+      <div class="text-right leading-tight">
+        <div class="text-sm font-medium">ENTRE / CADASTRE-SE</div>
+        <div class="text-xs text-gray-500">MINHA CONTA</div>
+      </div>
+
+      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/06d0a8a9765adcea98087831387e1073.svg"
+           alt="usuario" class="w-6 h-6" />
+
+      <button class="p-1">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 6h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <div id="fundo-carrinho-fixo" class="flex items-center justify-center text-white rounded-md w-[100px] h-[99px] mt-[25px]">
+        <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/11a91bad46c265fb5d9e106769ae9508.jpg"
+             alt="carrinho" class="w-full h-auto" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      <!--MAIN-->
+
+   <main class="w-full flex flex-col items-center justify-center gap-6 px-4 md:px-0"">
+    <section class="w-full max-w-[1108px]">
+
+    <!-- 3. Card de informação -->
+    <section class="rounded-xlg border border-[#9B51DF] bg-[#ede5f2] flex justify-between items-start md:items-center p-3 md:pr-6 min-h-[75px] h-[137px] relative z-0 md:gap-x-3 mt-10 mb-5 px-[60px] rounded-lg">
+      <div class="flex items-center gap-2 text-yellow-800">
+        <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/0e8af05917ffd98754cd39ef4a4448fd.svg">
+        <p>Fique atento!
+          O Grupo Sabin alerta que não envia links para download de aplicativos,
+           não solicita dados pessoais, bancários, senhas ou participação em sorteios.
+            Também não realizamos cobranças via PIX, WhatsApp ou outros meios não oficiais.
+             Todas as comunicações são feitas exclusivamente por meio de nossos canais oficiais.</p>
+     
+        </div>
+      <button class="font-bold text-yellow-700 hover:text-yellow-900">Fechar X</button>
+    </section>
+
+    <!-- 4. Carrossel simples (scroll manual) -->
+        <section id="carrosselsimples" class="bg-white flex items-center gap-6 h-[360px] mb-6">
+          <!-- Área rolável -->
+          <div id="carrosselD" class="max-w-7xl flex gap-6 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 h-[360px]">
+            <div class="w-auto h-auto bg-gray-100 rounded-lg flex items-center justify-center text-gray-500 shrink-0">
+              <img src="https://loja.sabin.com.br/media/banners/_/b/_banner_loja_tablet_1108x358px.jpg" alt="corrida" class="w-auto h-[340px] rounded-lg shadow-lg">
+            </div>
+            <div class="w-auto h-auto bg-gray-100 rounded-lg flex items-center justify-center text-gray-500 shrink-0">
+              <img src="https://loja.sabin.com.br/media/banners/o/u/outrosa-novazul-mobile_576x290_.png" alt="prevensão" class="w-auto h-[340px] rounded-lg shadow-lg">
+            </div>
+            <div class="w-auto h-auto bg-gray-100 rounded-lg flex items-center justify-center text-gray-500 shrink-0">
+              <img src="https://loja.sabin.com.br/media/banners/a/r/arexvy_mobile__576x290__1.png" alt="Vacina" class="w-auto h-[340px] rounded-lg shadow-lg">
+            </div>
+          </div>
+
+              <!-- Link fixo ao lado -->
+              <a href="https://loja.sabin.com.br/entre?onboarding=true"
+                class="w-[400px] h-[340px] shrink-0 border border-red-300 bg-red-50 rounded-lg flex flex-col justify-center items-center text-red-700 hover:bg-red-100 transition">
+                <img src="https://loja.sabin.com.br/media/sabin_budgets/stores/1/upload_mobile.png" alt="Crie sua conta Sabin">
+                <p>Crie sua conta Sabin</p>
+                <span class="text-2xl">→</span>
+              </a>
+              
+        </section>
+
+
+    <!-- 5. Seção com destaques -->
+    <section class="bg-gray-50">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 position-relative">
+        <div class="h-40 bg-white rounded-lg shadow hover:-translate-y-2 hover:shadow-lg transition flex items-center justify-center"><img src="https://loja.sabin.com.br/media/widgetsimages/v/a/vacinas.png" class="w-full h-full"></div>
+        <div class="h-40 bg-white rounded-lg shadow hover:-translate-y-2 hover:shadow-lg transition flex items-center justify-center"><img src="https://loja.sabin.com.br/media/widgetsimages/v/a/vacinas_pra_crian_as.png" alt="vacina" class="w-full h-full"></div>
+        <div class="h-40 bg-white rounded-lg shadow hover:-translate-y-2 hover:shadow-lg transition flex items-center justify-center"><img src="https://loja.sabin.com.br/media/widgetsimages/t/e/teste_geneticos.png" alt="genetica" class="w-full h-full"></div>
+        <div class="h-40 bg-white rounded-lg shadow hover:-translate-y-2 hover:shadow-lg transition flex items-center justify-center"><img src="https://loja.sabin.com.br/media/widgetsimages/c/h/check_up_banner_destaque_loja___categorias_conversa_o___530_x_220px.png" alt="check_up" class="w-full h-full"></div>
+      </div>
+    </section>
+
+    <!-- 6. Em destaque -->
+    <section class="bg-white">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">Em destaque</h2>
+        <div class="flex gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 pb-2">
+          <div class="w-60 bg-gray-100 rounded-lg p-4 flex flex-col justify-between shrink-0">
+            <p>Serviço 1</p>
+            <button class="mt-4 bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">CARRINHO</button>
+          </div>
+          <div class="w-60 bg-gray-100 rounded-lg p-4 flex flex-col justify-between shrink-0">
+            <p>Serviço 2</p>
+            <button class="mt-4 bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">CARRINHO</button>
+          </div>
+          <div class="w-60 bg-gray-100 rounded-lg p-4 flex flex-col justify-between shrink-0">
+            <p>Serviço 3</p>
+            <button class="mt-4 bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">CARRINHO</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 e 8. Filtro + Ofertas -->
+    <section class="bg-gray-50">
+      <div class="flex flex-col lg:flex-row gap-6 px-4">
+        <div>
+          <aside class="w-full lg:w-64 bg-white p-6 rounded-lg shadow">
+            <h3 class="font-bold text-lg mb-4 text-gray-800">Escolha nossos produtos e serviços</h3>
+            <div class="mb-6">
+              <h4 class="font-semibold mb-2">Vacinas</h4>
+              <label class="block"><input type="checkbox" class="mr-2">Gripe</label>
+              <label class="block"><input type="checkbox" class="mr-2">HPV</label>
+              <label class="block"><input type="checkbox" class="mr-2">Febre Amarela</label>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Exames Laboratoriais</h4>
+              <label class="block"><input type="checkbox" class="mr-2">Hemograma</label>
+              <label class="block"><input type="checkbox" class="mr-2">Colesterol</label>
+              <label class="block"><input type="checkbox" class="mr-2">Glicose</label>
+            </div>
+          </aside>
+        </div>
+        <div>
+          <div class="flex-1 bg-white p-6 rounded-lg shadow">
+            <h3 class="font-semibold text-gray-800 mb-4">Ofertas do filtro</h3>
+            <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+              <div class="p-4 border rounded-lg text-center">
+                <p class="font-semibold">Check-up Básico</p>
+                <p class="text-red-600 font-bold mt-2">R$ 149,00</p>
+                <div class="mt-4 flex justify-center gap-3">
+                  <button class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100">Saiba mais</button>
+                  <button class="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700">CARRINHO Comprar</button>
+                </div>
+              </div>
+              <div class="p-4 border rounded-lg text-center">
+                <p class="font-semibold">Vacina HPV</p>
+                <p class="text-red-600 font-bold mt-2">R$ 299,00</p>
+                <div class="mt-4 flex justify-center gap-3">
+                  <button class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100">Saiba mais</button>
+                  <button class="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700">CARRINHO Comprar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Serviços mais buscados -->
+    <section class="bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-6">Serviços mais buscados</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="p-6 border rounded-lg text-center">
+            <p class="font-semibold mb-2">Hemograma Completo</p>
+            <p class="text-red-600 font-bold">R$ 69,00</p>
+            <button class="mt-3 bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700">CARRINHO Comprar</button>
+          </div>
+          <div class="p-6 border rounded-lg text-center opacity-70">
+            <p class="font-semibold mb-2">Vitamina D</p>
+            <p class="text-gray-600">Serviço indisponível</p>
+            <button class="mt-3 border border-gray-400 text-gray-700 px-4 py-1 rounded hover:bg-gray-100">Avise-me</button>
+          </div>
+          <div class="p-6 border rounded-lg text-center">
+            <p class="font-semibold mb-2">Check-up Executivo</p>
+            <p class="text-red-600 font-bold">R$ 499,00</p>
+            <button class="mt-3 bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700">CARRINHO Comprar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </section>  
+  </main>
+
+    <!-- 9.1 Seção de assinatura -->
+    <section class="py-12 bg-gray-100 text-black">
+      <div class="max-w-7xl mx-auto px-4 text-center">
+        <h2 class="text-2xl font-bold mb-6">Assine para receber novidades</h2>
+        <form class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+          <input type="text" placeholder="Seu nome"
+                 class="px-4 py-2 rounded-md text-gray-900 w-full sm:w-64 focus:outline-none" />
+          <input type="email" placeholder="Seu email"
+                 class="px-4 py-2 rounded-md text-gray-900 w-full sm:w-64 focus:outline-none" />
+          <button type="submit" class="bg-white text-red-700 px-6 py-2 rounded-md font-semibold hover:bg-gray-200">
+            Assinar
+          </button>
+        </form>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-sm text-left max-w-5xl mx-auto">
+          <div>
+            <h4 class="font-bold mb-2">Serviços</h4>
+            <ul class="space-y-1">
+              <li><a href="#" class="hover:underline">Exames</a></li>
+              <li><a href="#" class="hover:underline">Vacinas</a></li>
+              <li><a href="#" class="hover:underline">Check-ups</a></li>
+              <li><a href="#" class="hover:underline">Agendamentos</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-2">Informações</h4>
+            <ul class="space-y-1">
+              <li><a href="#" class="hover:underline">Fale Conosco</a></li>
+              <li><a href="#" class="hover:underline">Unidades</a></li>
+              <li><a href="#" class="hover:underline">Termos de Uso</a></li>
+              <li><a href="#" class="hover:underline">Perguntas Frequentes</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-2">Baixe o App</h4>
+            <button class="block w-full border border-white rounded-md px-3 py-1 mt-1 hover:bg-white hover:text-red-700">App Store</button>
+            <button class="block w-full border border-white rounded-md px-3 py-1 mt-2 hover:bg-white hover:text-red-700">Google Play</button>
+          </div>
+          <div>
+            <h4 class="font-bold mb-2">Contato</h4>
+            <p class="text-sm">0800-123-4567</p>
+            <div class="flex flex-wrap gap-2 mt-2 text-lg">
+              <a href="#" class="hover:text-gray-200"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/351732e41d43842319969b45c4a49cbc.svg"></a>
+              <a href="#" class="hover:text-gray-200"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/79eb207d4ef73e5e0a6e468dc440cd7f.svg"></a>
+              <a href="#" class="hover:text-gray-200"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/54409d8e1020532d6df505616c0c7dbb.svg"></a>
+              <a href="#" class="hover:text-gray-200"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/b4400c9936041745ec3ee70716fd1b69.svg"></a>
+              <a href="#" class="hover:text-gray-200"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/95d21f4a3ed5f528b50d8ef9db5a0533.svg"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Selos -->
+    <section class="py-8 bg-white">
+      <div class="max-w-7xl mx-auto flex flex-wrap justify-center gap-10">
+        <div class="text-gray-600"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/494b0112d3cef4417c14b27d431aae08.jpg"></div>
+        <div class="text-gray-600"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/0fc7c98ab5c2af84645a728f6086a157.png"></div>
+        <div class="text-gray-600"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/58571f92b716ff19552ac24e63f109a2.png"></div>
+        <div class="text-gray-600"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/cdb1aff2161b741da43effc75da1ca9b.png"></div>
+      </div>
+    </section>
+
+    <!-- 11. Rodapé -->
+    <footer class="bg-gray-100 text-black py-6">
+      <p class="mt-2 text-center text-[18px] text-black font-bold ">Sabin Medicina Diagnóstica - CNPJ - 00.718.528/0001-09
+        <br>    <a class="underline">Termos de Consentimento</a> <a class="underline">Política de Privacidade</a> <a class="underline">Mapa do Site</a></p>
+    </footer>
+
+    <!--CONTROLA SOMBRA DA BARRA FIXA-->
+
+    <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const header = document.getElementById('topbar');
+    if (!header) return;
+
+    // estado inicial correto
+    header.classList.remove('shadow-sm', 'shadow', 'shadow-md');
+    header.classList.add('shadow-none');
+
+    const check = () => {
+      if (window.scrollY > 10) {
+        header.classList.remove('shadow-none');
+        header.classList.add('shadow-lg');
+      } else {
+        header.classList.remove('shadow-lg');
+        header.classList.add('shadow-none');
+      }
+    };
+
+    // roda no load para acertar estado inicial (caso a página já esteja rolada)
+    check();
+    window.addEventListener('scroll', check, { passive: true });
+  });
+</script>
+
+<script>
+  // Script para atualizar o texto do estado selecionado
+  document.addEventListener('DOMContentLoaded', () => {
+    const seletor = document.getElementById('seletorDeEstado');
+    const displayEstado = document.getElementById('estadoSelecionado');
+
+    if (seletor && displayEstado) {
+      seletor.addEventListener('change', () => {
+        displayEstado.textContent = seletor.value;
+      });
+    }
+  });
+</script>
+
+ 
+</body>
+</html>
