@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Importa a fonte Museo Sans (versão Rounded de um CDN). A família de fontes completa é um produto comercial. -->
+  <link href="https://fonts.cdnfonts.com/css/museo-sans-rounded" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- 2. Configura o Tailwind para usar a fonte Roboto (DEPOIS do CDN) -->
   <script>
@@ -27,7 +29,7 @@
     .pagination-button {
       width: 12px; /* Largura do botão inativo (círculo) */
       height: 12px; /* Altura do botão inativo (círculo) */
-      background-color: rgba(255, 255, 255, 100.0); /* Fundo semi-transparente */
+      background-color: #000000; /* Cor cinza claro sólido (bg-gray-300) */
       border-radius: 50%; /* Torna o botão inativo um círculo */
       overflow: hidden;
       cursor: pointer;
@@ -45,14 +47,23 @@
       border-radius: 6px; /* Bordas arredondadas para o preenchimento */
       transition: width 0s linear; /* A transição será controlada por JS */
     }
+    /* Remove o fundo amarelo do preenchimento automático do navegador */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-text-fill-color: #000; /* Cor do texto */
+        -webkit-box-shadow: 0 0 0px 1000px #fff inset; /* Cor de fundo (branca) */
+        transition: background-color 5000s ease-in-out 0s;
+    }
   </style>
 </head>
 
-<body class="bg-white text-gray-900 font-sans">
+<body class="bg-white font-sans">
 
   <!-- 1. Cabeçalho -->
-      <div id="cablh" class=" relative inset-x-0 bg-white border-b border-gray-200 z-40 px-[222px] font-sans text-[12px] leading-5">
-        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center px-4 py-[7px] text-sm text-gray-700">
+      <div id="cablh" class=" relative inset-x-0 bg-white z-40 px-[104px] font-sans text-[12px] leading-5 h-[44px]">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center px-4 h-full text-sm text-gray-700">
           <div class="flex flex-wrap gap-x-6">
             <a href="https://sabin.com.br/unidade/brasilia-df/" class="text-black hover:text-red-600 text-[12px]">PORTAL SABIN</a>
             <a href="https://laudos.sabin.com.br/shift/lis/sabin/elis/gestao/sabin.portal.login.csp" class="hover:text-red-700 text-[12px]">RESULTADO DE EXAMES</a>
@@ -104,35 +115,37 @@
       </div>
 
 <!-- Banner principal (STICKY) -->
-    <section id="topbar" class="sticky top-0 z-50 bg-gray-100 w-full shadow-none transition-shadow duration-300">
-      <div class="w-full max-w-[1108px] mx-auto h-[70px] flex items-center justify-between px-0">
+    <section id="topbar" class="sticky top-0 z-50 w-full shadow-none transition-shadow duration-300 h-[80px] border-t border-b px[104px]" style="background-color: rgb(247, 248, 252)">
+      
+      <div class="w-full max-w-[1108px] mx-auto h-full flex items-center justify-between">
         <!-- LOGO (esquerda) -->
         <a href="https://loja.sabin.com.br/?___store=brasilia_df" class="flex items-center">
           <img src="https://loja.sabin.com.br/media/favicon/default/Logo_-_vermelha-4k.png"
-              alt="sabin" class="w-[85px] h-auto" />
+              alt="sabin" class="w-[85.33px] h-auto" />
         </a>
-
-
 
           <!-- BUSCA (centro) -->
         <header class="sticky top-0 z-20 bg-none transition-shadow duration-300">
             <div class="relative inline-block mx-auto my-2">
-                <input
+               
+              <input id="buscaCidade"
                   type="text"
                   placeholder="O que você procura?"
-                  class="w-[300px] rounded-full border border-gray-300 pl-4 pr-12 py-2 text-base text-black focus:outline-none focus:ring-1 focus:ring-gray-300"
+                  class="w-[442px] h-[46px] appearance-none rounded-full border border-gray-200 bg-white pl-[20.8px] pr-[80px] pt-2 pb-2 text-base font-normal text-black placeholder:text-black shadow-none outline-none focus:outline-none caret-black"
+                  class="w-[442px] h-[46px] appearance-none rounded-full border border-gray-200 bg-white pl-[20.8px] pr-[80px] pt-2 pb-2 text-base font-sans font-normal text-black placeholder:text-black shadow-none outline-none focus:outline-none caret-black"
                 />
                 <button
                   type="button"
                   aria-label="Buscar"
-                  class="absolute right-1 top-1/2 transform -translate-y-1/2 bg-red-500 hover:bg-red-600 text-white w-9 h-9 rounded-full flex items-center justify-center shadow-sm"
+                  class="absolute right-1 top-1/2 transform -translate-y-1/2 bg-red-500 hover:bg-red-600 text-white w-[49px] h-[39px] rounded-full flex items-center justify-center shadow-sm"
                 >
                 <img
                   src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/30bcd5374a562c97bff97bfcf4ae5433.svg"
                   alt="lupa"
-                  class="w-4 h-4"
+                  class="w-[24px] h-[24px]"
                 />
                   </button>
+
             </div>
         </header>
 
@@ -140,41 +153,52 @@
 
 
 
-    <!-- ÍCONES E CARRINHO (direita) -->
-    <div class="flex items-center gap-4">
-      <div class="text-right leading-tight">
-        <div class="text-sm font-medium">ENTRE / CADASTRE-SE</div>
-        <div class="text-xs text-gray-500">MINHA CONTA</div>
+        <!-- ÍCONES E CARRINHO (direita) -->
+        <div id="loginCriarConta" class="flex items-center gap-4">
+            <div class="text-right">
+              <div id="entreCadastro" class="text-sm font-normal uppercase text-black leading-none">ENTRE / CADASTRE-SE</div>
+              <div id="minhaConta" class="text-xs font-normal uppercase text-[#666666] leading-3">MINHA CONTA</div>
+            </div>
+
+            <div class="w-7 h-7">
+            <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/06d0a8a9765adcea98087831387e1073.svg"
+                alt="usuario" class="w-6 h-6" />
+            </div>
+
+            <button id="burger" class="p-1">
+              <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/8b72f71ed3a9759e7c534bdd73675962.svg" alt="Menu" class="w-18 h-auto px-[4px]">
+            </button>
+
+            <div id="fundo-carrinho-fixo" style="background-color: #ff3b3b; width: 100px; height: 100px; text-align: center; border-radius: 0px 0px 8px 8px; position: relative;" class="mt-5">
+              <div style="position: relative; display: inline-block;">
+                <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/11a91bad46c265fb5d9e106769ae9508.jpg" alt="Carrinho" style="width: 90px;">
+                <span id="textoCarrinho" style="position: absolute; top: 7px; right: 15px; background: #4a4a4a00; color: white; font-weight: bold; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-family: 'Museo Sans Rounded', sans-serif;">
+                  0
+                </span>
+              </div>
+              <div id="minhasCompras" style="margin-top: -2px; color: white; font-weight: bold; font-family: 'Museo Sans Rounded', sans-serif; font-size: 12px;">
+                MINHAS
+              </div>
+              <div id="minhasCompras2" style="margin-top: -4px; color: white; font-weight: bold; font-family: 'Museo Sans Rounded', sans-serif; font-size: 12px;">
+                COMPRAS
+              </div>
+            </div>
+        </div>
+
       </div>
-
-      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/06d0a8a9765adcea98087831387e1073.svg"
-           alt="usuario" class="w-6 h-6" />
-
-      <button class="p-1">
-        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 6h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
-
-      <div id="fundo-carrinho-fixo" class="flex items-center justify-center text-white rounded-md w-[100px] h-[99px] mt-[25px]">
-        <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/11a91bad46c265fb5d9e106769ae9508.jpg"
-             alt="carrinho" class="w-full h-auto" />
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
 
       <!--MAIN-->
 
    <main class="w-full flex flex-col items-center justify-center gap-6 px-4 md:px-0"">
+    
     <section class="w-full max-w-[1108px]">
 
     <!-- 3. Card de informação -->
-    <section id="aviso" class="rounded-xlg border border-[#9B51DF] bg-[#ede5f2] flex justify-between items-start md:items-center p-3 md:pr-6 min-h-[75px] h-[137px] relative z-0 md:gap-x-3 mt-10 px-[60px] rounded-lg">
+    <section id="aviso" class="rounded-xlg border border-[#9B51DF] bg-[#ede5f2] flex justify-between items-start md:items-center p-3 md:pr-6 min-h-[75px] h-[137px] relative z-0 md:gap-x-3 mt-8 px-[60px] rounded-lg font-sans">
         <div class="flex items-center gap-2 text-gray-900">
-        <img id="balaoAviso" src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/0e8af05917ffd98754cd39ef4a4448fd.svg"
-        >
+        <img id="balaoAviso" src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/0e8af05917ffd98754cd39ef4a4448fd.svg" class="w-[34px] h-[34px]" alt="aviso">
         <p id="textoPrincipal" class="px-2 text-[#444444] text-base"><strong>Fique atento!</strong><br>
           O Grupo Sabin alerta que não envia links para download de aplicativos,
            não solicita dados pessoais, bancários, senhas ou participação em sorteios.
@@ -184,7 +208,7 @@
         </div>
         <!-- Contêiner para o texto e o botão de fechar (agora como item flex) -->
         <div class="flex items-center gap-2 shrink-0">
-          <p class="text-sm font-medium text-gray-700">Fechar</p>
+          <p class="text-sm font-medium text-gray-700"><strong> Fechar</strong></p>
           <button id="fecharAviso" class="w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-colors" aria-label="Fechar aviso">
            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -236,6 +260,11 @@
 
 
     <!-- 5. Seção com destaques -->
+
+    <div>
+        <h3 id="vocePrecisa" class="text-[22px] text-center font-bold text-#4b4b4b pb-5 pt-6 font-sans">O que você precisa, o Sabin tem:</h3>
+    </div>
+
     <section class="bg-gray-50">
       <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 position-relative">
         <div class="h-40 bg-white rounded-lg shadow hover:-translate-y-2 hover:shadow-lg transition flex items-center justify-center"><img src="https://loja.sabin.com.br/media/widgetsimages/v/a/vacinas.png" class="w-full h-full"></div>
