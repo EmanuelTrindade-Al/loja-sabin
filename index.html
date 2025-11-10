@@ -22,6 +22,30 @@
     }
   </script>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Estilos para a paginação/barra de progresso customizada */
+    .pagination-button {
+      width: 12px; /* Largura do botão inativo (círculo) */
+      height: 12px; /* Altura do botão inativo (círculo) */
+      background-color: rgba(255, 255, 255, 100.0); /* Fundo semi-transparente */
+      border-radius: 50%; /* Torna o botão inativo um círculo */
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: width 0.4s ease, border-radius 0.4s ease; /* Animação de expansão */
+    }
+    .pagination-button.active {
+      width: 40px; /* Largura do botão ativo (barra) */
+      border-radius: 6px; /* Bordas arredondadas para a barra */
+    }
+    .progress-bar {
+      height: 100%;
+      background-color: #ef4444; /* Cor da barra de progresso (vermelho) */
+      width: 0; /* Começa sem preenchimento */
+      border-radius: 6px; /* Bordas arredondadas para o preenchimento */
+      transition: width 0s linear; /* A transição será controlada por JS */
+    }
+  </style>
 </head>
 
 <body class="bg-white text-gray-900 font-sans">
@@ -36,7 +60,7 @@
           </div>
 
           <!-- Container que agora se parece com um botão -->
-          <div id="seleEstado" class="relative flex items-center bg-gray-600 border border-gray-300 rounded-full text-white px-4 py-[5px] mt-2 sm:mt-0">
+          <div id="seleEstado" class="relative flex items-center bg-gray-600 border border-gray-600 rounded-full text-white px-4 py-[5px] mt-2 sm:mt-0">
             <span class="font-sans text-[14px] mr-1">Você está em</span>
             <!-- Span que vai exibir o estado selecionado -->
             <span id="estadoSelecionado" class="font-sans text-[14px]">Brasília - DF</span>
@@ -72,9 +96,9 @@
               <option>São Paulo</option>
             </select>
           </div>
-        <div class="flex items-center gap-2">
-            <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2e7b01942021ff8be164fa7aac29d108.svg" alt="libras">
-            <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/10b294aa1d728b6901fa9c1834bcb9fc.svg" alt="troca cor do fundo">
+        <div id="acessibilidade" class="flex items-center gap-4">
+              <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/10b294aa1d728b6901fa9c1834bcb9fc.svg" alt="troca cor do fundo" class="w-6 h-6">
+              <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2e7b01942021ff8be164fa7aac29d108.svg" alt="libras" class="w-6 h-6">
         </div>
         </div>
       </div>
@@ -147,40 +171,65 @@
     <section class="w-full max-w-[1108px]">
 
     <!-- 3. Card de informação -->
-    <section class="rounded-xlg border border-[#9B51DF] bg-[#ede5f2] flex justify-between items-start md:items-center p-3 md:pr-6 min-h-[75px] h-[137px] relative z-0 md:gap-x-3 mt-10 mb-5 px-[60px] rounded-lg">
-      <div class="flex items-center gap-2 text-yellow-800">
-        <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/0e8af05917ffd98754cd39ef4a4448fd.svg">
-        <p>Fique atento!
+    <section id="aviso" class="rounded-xlg border border-[#9B51DF] bg-[#ede5f2] flex justify-between items-start md:items-center p-3 md:pr-6 min-h-[75px] h-[137px] relative z-0 md:gap-x-3 mt-10 px-[60px] rounded-lg">
+        <div class="flex items-center gap-2 text-gray-900">
+        <img id="balaoAviso" src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/0e8af05917ffd98754cd39ef4a4448fd.svg"
+        >
+        <p id="textoPrincipal" class="px-2 text-[#444444] text-base"><strong>Fique atento!</strong><br>
           O Grupo Sabin alerta que não envia links para download de aplicativos,
            não solicita dados pessoais, bancários, senhas ou participação em sorteios.
             Também não realizamos cobranças via PIX, WhatsApp ou outros meios não oficiais.
              Todas as comunicações são feitas exclusivamente por meio de nossos canais oficiais.</p>
      
         </div>
-      <button class="font-bold text-yellow-700 hover:text-yellow-900">Fechar X</button>
+        <!-- Contêiner para o texto e o botão de fechar (agora como item flex) -->
+        <div class="flex items-center gap-2 shrink-0">
+          <p class="text-sm font-medium text-gray-700">Fechar</p>
+          <button id="fecharAviso" class="w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-colors" aria-label="Fechar aviso">
+           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
     </section>
 
     <!-- 4. Carrossel simples (scroll manual) -->
-        <section id="carrosselsimples" class="bg-white flex items-center gap-6 h-[360px] mb-6">
-          <!-- Área rolável -->
-          <div id="carrosselD" class="max-w-7xl flex gap-6 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 h-[360px]">
-            <div class="w-auto h-auto bg-gray-100 rounded-lg flex items-center justify-center text-gray-500 shrink-0">
-              <img src="https://loja.sabin.com.br/media/banners/_/b/_banner_loja_tablet_1108x358px.jpg" alt="corrida" class="w-auto h-[340px] rounded-lg shadow-lg">
+        <section id="carrosselsimples" class="relative bg-white flex items-center gap-6 h-[250px] mb-6 mt-6">
+          <!-- Área rolável (agora controlada por JS) -->
+          <div id="carrosselContainer" class="flex gap-6 overflow-hidden h-[250px] rounded-2xl scroll-smooth">
+            <!-- Item 1 -->
+            <div id="img0carro" class="carousel-item w-[700px] h-[250px] bg-gray-100 rounded-lg shrink-0 overflow-hidden">
+              <img src="https://loja.sabin.com.br/media/banners/_/b/_banner_loja_tablet_1108x358px.jpg" alt="corrida" class="w-full h-full object-cover object-center">
             </div>
-            <div class="w-auto h-auto bg-gray-100 rounded-lg flex items-center justify-center text-gray-500 shrink-0">
-              <img src="https://loja.sabin.com.br/media/banners/o/u/outrosa-novazul-mobile_576x290_.png" alt="prevensão" class="w-auto h-[340px] rounded-lg shadow-lg">
+            <!-- Item 2 -->
+            <div id="img1carro" class="carousel-item w-[700px] h-[250px] bg-gray-100 rounded-lg shrink-0 overflow-hidden">
+              <img src="https://loja.sabin.com.br/media/banners/b/a/banner_1__1.jpg" alt="prevensão" class="w-full h-full object-cover object-center">
             </div>
-            <div class="w-auto h-auto bg-gray-100 rounded-lg flex items-center justify-center text-gray-500 shrink-0">
-              <img src="https://loja.sabin.com.br/media/banners/a/r/arexvy_mobile__576x290__1.png" alt="Vacina" class="w-auto h-[340px] rounded-lg shadow-lg">
+            <!-- Item 3 -->
+            <div id="img2carro" class="carousel-item w-[700px] h-[250px] bg-gray-100 rounded-lg shrink-0 overflow-hidden">
+              <img src="https://loja.sabin.com.br/media/banners/a/r/arexvy_tablete__1108x358__3.png" alt="Vacina" class="w-full h-full object-cover object-center">
             </div>
+            <!-- Item 4 -->
+             <div id="img3carro" class="carousel-item w-[700px] h-[250px] bg-gray-100 rounded-lg shrink-0 overflow-hidden">
+              <img src="https://loja.sabin.com.br/media/banners/b/a/banner_hz_setembro_mobile_-_576_x_290px_2.jpg" alt="Banner Setembro" class="w-full h-full object-cover object-center">
+             </div>
+            <!-- Item 5 -->
+             <div id="img4carro" class="carousel-item w-[700px] h-[250px] bg-gray-100 rounded-lg shrink-0 overflow-hidden">
+              <img src="https://loja.sabin.com.br/media/banners/i/n/infus_o_banner_loja_tablet.jpg" alt="Infusão Banner" class="w-full h-full object-cover object-center">
+             </div>
+
+          </div>
+
+          <!-- Contêiner para a Paginação/Barra de Progresso -->
+          <div id="carousel-pagination" class="absolute bottom-4 left-4 flex gap-2 z-10">
+            <!-- Os botões de paginação serão injetados aqui pelo JavaScript -->
           </div>
 
               <!-- Link fixo ao lado -->
-              <a href="https://loja.sabin.com.br/entre?onboarding=true"
-                class="w-[400px] h-[340px] shrink-0 border border-red-300 bg-red-50 rounded-lg flex flex-col justify-center items-center text-red-700 hover:bg-red-100 transition">
-                <img src="https://loja.sabin.com.br/media/sabin_budgets/stores/1/upload_mobile.png" alt="Crie sua conta Sabin">
-                <p>Crie sua conta Sabin</p>
-                <span class="text-2xl">→</span>
+              <a id="ficouMaisFacil" href="https://loja.sabin.com.br/entre?onboarding=true"
+                class="w-[384px] h-[250px] shrink-0 bg-red-50 rounded-2xl flex flex-col justify-center items-center text-red-700 hover:bg-red-100 transition">
+                <img src="https://loja.sabin.com.br/media/sabin_budgets/stores/1/upload_desktop.png" alt="Crie sua conta Sabin" class="w-full h-full object-cover rounded-2xl">
+                
               </a>
               
         </section>
@@ -400,6 +449,89 @@
   });
 </script>
 
+<script>
+  // Script para o carrossel automático
+  document.addEventListener('DOMContentLoaded', () => {
+    const carouselContainer = document.getElementById('carrosselContainer');
+    if (!carouselContainer) return;
+    
+    const carouselItems = carouselContainer.children;
+    if (carouselItems.length === 0) return;
+
+    const paginationContainer = document.getElementById('carousel-pagination');
+    let currentIndex = 0;
+    const scrollInterval = 3000; // 3 segundos
+    let intervalId = null;
+
+    // Cria os botões de paginação
+    for (let i = 0; i < carouselItems.length; i++) {
+      const button = document.createElement('button');
+      button.className = 'pagination-button';
+      button.setAttribute('role', 'tab');
+      button.setAttribute('aria-label', `Ir para o slide ${i + 1}`);
+      button.innerHTML = '<div class="progress-bar"></div>';
+      button.addEventListener('click', () => {
+        goToSlide(i);
+      });
+      paginationContainer.appendChild(button);
+    }
+
+    const paginationButtons = paginationContainer.children;
+
+    const updatePagination = () => {
+      for (let i = 0; i < paginationButtons.length; i++) {
+        paginationButtons[i].classList.remove('active');
+        const progressBar = paginationButtons[i].querySelector('.progress-bar');
+        progressBar.style.transition = 'width 0s'; // Reseta transição
+        progressBar.style.width = '0%'; // Reseta a largura
+
+        if (i === currentIndex) {
+          paginationButtons[i].classList.add('active');
+          // Força o navegador a aplicar o reset antes de iniciar a nova animação
+          setTimeout(() => {
+            progressBar.style.transition = `width ${scrollInterval / 1000}s linear`;
+            progressBar.style.width = '100%';
+          }, 50); // Pequeno delay para garantir o reset
+        }
+      }
+    };
+
+    const goToSlide = (index) => {
+      currentIndex = index;
+      const targetItem = carouselItems[currentIndex];
+      if (targetItem) {
+        const scrollPosition = currentIndex === 0 ? 0 : targetItem.offsetLeft - carouselContainer.offsetLeft;
+        carouselContainer.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+      }
+      updatePagination();
+      // Reinicia o intervalo
+      clearInterval(intervalId);
+      intervalId = setInterval(scrollToNextItem, scrollInterval);
+    };
+
+    const scrollToNextItem = () => {
+      const nextIndex = (currentIndex + 1) % carouselItems.length;
+      goToSlide(nextIndex);
+    };
+
+    // Inicia o carrossel
+    goToSlide(0);
+  });
+</script>
+
+<script>
+  // Script para fechar o aviso
+  document.addEventListener('DOMContentLoaded', () => {
+    const avisoSection = document.getElementById('aviso');
+    const fecharButton = document.getElementById('fecharAviso');
+
+    if (avisoSection && fecharButton) {
+      fecharButton.addEventListener('click', () => {
+        avisoSection.style.display = 'none';
+      });
+    }
+  });
+</script>
  
 </body>
 </html>
