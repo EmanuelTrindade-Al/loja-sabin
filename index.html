@@ -465,156 +465,127 @@
 
     <!--CONTROLA SOMBRA DA BARRA FIXA-->
 
-    <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const header = document.getElementById('topbar');
-    if (!header) return;
+          <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                  const header = document.getElementById('topbar');
+                    if (!header) return;
 
-    // estado inicial correto
-    header.classList.remove('shadow-sm', 'shadow', 'shadow-md');
-    header.classList.add('shadow-none');
+                  // estado inicial correto
+                  header.classList.remove('shadow-sm', 'shadow', 'shadow-md');
+                  header.classList.add('shadow-none');
 
-    const check = () => {
-      if (window.scrollY > 10) {
-        header.classList.remove('shadow-none');
-        header.classList.add('shadow-lg');
-      } else {
-        header.classList.remove('shadow-lg');
-        header.classList.add('shadow-none');
-      }
-    };
+                  const check = () => {
+                    if (window.scrollY > 10) {
+                      header.classList.remove('shadow-none');
+                      header.classList.add('shadow-lg');
+                    } else {
+                      header.classList.remove('shadow-lg');
+                      header.classList.add('shadow-none');
+                  }
+                };
 
-    // roda no load para acertar estado inicial (caso a página já esteja rolada)
-    check();
-    window.addEventListener('scroll', check, { passive: true });
-  });
-</script>
+                // roda no load para acertar estado inicial (caso a página já esteja rolada)
+                check();
+                window.addEventListener('scroll', check, { passive: true });
+          });
+        </script>
 
-<script>
-  // Script para atualizar o texto do estado selecionado
-  document.addEventListener('DOMContentLoaded', () => {
-    const seletor = document.getElementById('seletorDeEstado');
-    const displayEstado = document.getElementById('estadoSelecionado');
+        <script>
+          // Script para atualizar o texto do estado selecionado
+          document.addEventListener('DOMContentLoaded', () => {
+            const seletor = document.getElementById('seletorDeEstado');
+            const displayEstado = document.getElementById('estadoSelecionado');
 
-    if (seletor && displayEstado) {
-      seletor.addEventListener('change', () => {
-        displayEstado.textContent = seletor.value;
-      });
-    }
-  });
-</script>
+            if (seletor && displayEstado) {
+              seletor.addEventListener('change', () => {
+                displayEstado.textContent = seletor.value;
+              });
+            }
+          });
+        </script>
 
-<script>
-  // Script para o carrossel automático
-  document.addEventListener('DOMContentLoaded', () => {
-    const carouselContainer = document.getElementById('carrosselContainer');
-    if (!carouselContainer) return;
-    
-    const carouselItems = carouselContainer.children;
-    if (carouselItems.length === 0) return;
+        <script>
+          // Script para o carrossel automático
+          document.addEventListener('DOMContentLoaded', () => {
+            const carouselContainer = document.getElementById('carrosselContainer');
+            if (!carouselContainer) return;
+            
+            const carouselItems = carouselContainer.children;
+            if (carouselItems.length === 0) return;
 
-    const paginationContainer = document.getElementById('carousel-pagination');
-    let currentIndex = 0;
-    const scrollInterval = 3000; // 3 segundos
-    let intervalId = null;
+            const paginationContainer = document.getElementById('carousel-pagination');
+            let currentIndex = 0;
+            const scrollInterval = 3000; // 3 segundos
+            let intervalId = null;
 
-    // Cria os botões de paginação
-    for (let i = 0; i < carouselItems.length; i++) {
-      const button = document.createElement('button');
-      button.className = 'pagination-button';
-      button.setAttribute('role', 'tab');
-      button.setAttribute('aria-label', `Ir para o slide ${i + 1}`);
-      button.innerHTML = '<div class="progress-bar"></div>';
-      button.addEventListener('click', () => {
-        goToSlide(i);
-      });
-      paginationContainer.appendChild(button);
-    }
+            // Cria os botões de paginação
+            for (let i = 0; i < carouselItems.length; i++) {
+              const button = document.createElement('button');
+              button.className = 'pagination-button';
+              button.setAttribute('role', 'tab');
+              button.setAttribute('aria-label', `Ir para o slide ${i + 1}`);
+              button.innerHTML = '<div class="progress-bar"></div>';
+              button.addEventListener('click', () => {
+                goToSlide(i);
+              });
+              paginationContainer.appendChild(button);
+            }
 
-    const paginationButtons = paginationContainer.children;
+            const paginationButtons = paginationContainer.children;
 
-    const updatePagination = () => {
-      for (let i = 0; i < paginationButtons.length; i++) {
-        paginationButtons[i].classList.remove('active');
-        const progressBar = paginationButtons[i].querySelector('.progress-bar');
-        progressBar.style.transition = 'width 0s'; // Reseta transição
-        progressBar.style.width = '0%'; // Reseta a largura
+            const updatePagination = () => {
+              for (let i = 0; i < paginationButtons.length; i++) {
+                paginationButtons[i].classList.remove('active');
+                const progressBar = paginationButtons[i].querySelector('.progress-bar');
+                progressBar.style.transition = 'width 0s'; // Reseta transição
+                progressBar.style.width = '0%'; // Reseta a largura
 
-        if (i === currentIndex) {
-          paginationButtons[i].classList.add('active');
-          // Força o navegador a aplicar o reset antes de iniciar a nova animação
-          setTimeout(() => {
-            progressBar.style.transition = `width ${scrollInterval / 1000}s linear`;
-            progressBar.style.width = '100%';
-          }, 50); // Pequeno delay para garantir o reset
-        }
-      }
-    };
+                if (i === currentIndex) {
+                  paginationButtons[i].classList.add('active');
+                  // Força o navegador a aplicar o reset antes de iniciar a nova animação
+                  setTimeout(() => {
+                    progressBar.style.transition = `width ${scrollInterval / 1000}s linear`;
+                    progressBar.style.width = '100%';
+                  }, 50); // Pequeno delay para garantir o reset
+                }
+              }
+            };
 
-    const goToSlide = (index) => {
-      currentIndex = index;
-      const targetItem = carouselItems[currentIndex];
-      if (targetItem) {
-        const scrollPosition = currentIndex === 0 ? 0 : targetItem.offsetLeft - carouselContainer.offsetLeft;
-        carouselContainer.scrollTo({ left: scrollPosition, behavior: 'smooth' });
-      }
-      updatePagination();
-      // Reinicia o intervalo
-      clearInterval(intervalId);
-      intervalId = setInterval(scrollToNextItem, scrollInterval);
-    };
+            const goToSlide = (index) => {
+              currentIndex = index;
+              const targetItem = carouselItems[currentIndex];
+              if (targetItem) {
+                const scrollPosition = currentIndex === 0 ? 0 : targetItem.offsetLeft - carouselContainer.offsetLeft;
+                carouselContainer.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+              }
+              updatePagination();
+              // Reinicia o intervalo
+              clearInterval(intervalId);
+              intervalId = setInterval(scrollToNextItem, scrollInterval);
+            };
 
-    const scrollToNextItem = () => {
-      const nextIndex = (currentIndex + 1) % carouselItems.length;
-      goToSlide(nextIndex);
-    };
+            const scrollToNextItem = () => {
+              const nextIndex = (currentIndex + 1) % carouselItems.length;
+              goToSlide(nextIndex);
+            };
 
-    // Inicia o carrossel
-    goToSlide(0);
-  });
-</script>
+            // Inicia o carrossel
+            goToSlide(0);
+          });
+        </script>
+        <script>
+          // Script para fechar o aviso
+          document.addEventListener('DOMContentLoaded', () => {
+            const avisoSection = document.getElementById('aviso');
+            const fecharButton = document.getElementById('fecharAviso');
 
-<script>
-  // Script para fechar o aviso
-  document.addEventListener('DOMContentLoaded', () => {
-    const avisoSection = document.getElementById('aviso');
-    const fecharButton = document.getElementById('fecharAviso');
-
-    if (avisoSection && fecharButton) {
-      fecharButton.addEventListener('click', () => {
-        avisoSection.style.display = 'none';
-      });
-    }
-  });
-</script>
- 
-</body>
-</html>
-    };
-
-    const scrollToNextItem = () => {
-      const nextIndex = (currentIndex + 1) % carouselItems.length;
-      goToSlide(nextIndex);
-    };
-
-    // Inicia o carrossel
-    goToSlide(0);
-  });
-</script>
-
-<script>
-  // Script para fechar o aviso
-  document.addEventListener('DOMContentLoaded', () => {
-    const avisoSection = document.getElementById('aviso');
-    const fecharButton = document.getElementById('fecharAviso');
-
-    if (avisoSection && fecharButton) {
-      fecharButton.addEventListener('click', () => {
-        avisoSection.style.display = 'none';
-      });
-    }
-  });
-</script>
+            if (avisoSection && fecharButton) {
+              fecharButton.addEventListener('click', () => {
+                avisoSection.style.display = 'none';
+              });
+            }
+          });
+        </script>
  
 </body>
 </html>
