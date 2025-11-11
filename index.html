@@ -4,20 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Loja Sabin</title>
-  <!-- 1. Importa a fonte Roboto do Google Fonts -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <!-- Importa a fonte Museo Sans (versão Rounded de um CDN). A família de fontes completa é um produto comercial. -->
+  
   <link href="https://fonts.cdnfonts.com/css/museo-sans-rounded" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- 2. Configura o Tailwind para usar a fonte Roboto (DEPOIS do CDN) -->
+  
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Roboto', 'sans-serif'],
+            sans: ['Roboto', 'sans-serif'], 
+            museo: ['Museo Sans Rounded', 'serif'], 
           },
         },
       },
@@ -25,35 +26,35 @@
   </script>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Estilos para a paginação/barra de progresso customizada */
+
     .pagination-button {
-      width: 12px; /* Largura do botão inativo (círculo) */
-      height: 12px; /* Altura do botão inativo (círculo) */
-      background-color: #000000; /* Cor cinza claro sólido (bg-gray-300) */
-      border-radius: 50%; /* Torna o botão inativo um círculo */
+      width: 12px; 
+      height: 12px;
+      background-color: #000000; 
+      border-radius: 50%; 
       overflow: hidden;
       cursor: pointer;
       position: relative;
-      transition: width 0.4s ease, border-radius 0.4s ease; /* Animação de expansão */
+      transition: width 0.4s ease, border-radius 0.4s ease; 
     }
     .pagination-button.active {
-      width: 40px; /* Largura do botão ativo (barra) */
-      border-radius: 6px; /* Bordas arredondadas para a barra */
+      width: 40px; 
+      border-radius: 6px; 
     }
     .progress-bar {
       height: 100%;
-      background-color: #ef4444; /* Cor da barra de progresso (vermelho) */
-      width: 0; /* Começa sem preenchimento */
-      border-radius: 6px; /* Bordas arredondadas para o preenchimento */
-      transition: width 0s linear; /* A transição será controlada por JS */
+      background-color: #ef4444; 
+      width: 0; 
+      border-radius: 6px; 
+      transition: width 0s linear; 
     }
-    /* Remove o fundo amarelo do preenchimento automático do navegador */
+
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
     input:-webkit-autofill:active {
-        -webkit-text-fill-color: #000; /* Cor do texto */
-        -webkit-box-shadow: 0 0 0px 1000px #fff inset; /* Cor de fundo (branca) */
+        -webkit-text-fill-color: #000;
+        -webkit-box-shadow: 0 0 0px 1000px #fff inset; 
         transition: background-color 5000s ease-in-out 0s;
     }
   </style>
@@ -62,20 +63,20 @@
 <body class="bg-white font-sans">
 
   <!-- 1. Cabeçalho -->
-      <div id="cablh" class=" relative inset-x-0 bg-white z-40 px-[104px] font-sans text-[12px] leading-5 h-[44px]">
-        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center px-4 h-full text-sm text-gray-700">
-          <div class="flex flex-wrap gap-x-6">
+      <div id="cablh" class=" relative inset-x-0 bg-white z-40 w-full px-4 font-sans text-[12px] leading-5 h-[44px]">
+        <div class="w-[1108px] mx-auto flex flex-wrap items-center px-0 h-full text-sm text-gray-700 gap-x-20 justify-between">
+          <div class="flex flex-wrap gap-x-[24px]">
             <a href="https://sabin.com.br/unidade/brasilia-df/" class="text-black hover:text-red-600 text-[12px]">PORTAL SABIN</a>
             <a href="https://laudos.sabin.com.br/shift/lis/sabin/elis/gestao/sabin.portal.login.csp" class="hover:text-red-700 text-[12px]">RESULTADO DE EXAMES</a>
             <a href="https://blog.sabin.com.br/" class="text-black hover:text-red-600 text-[12px]">IR PARA O BLOG</a>
           </div>
 
-          <!-- Container que agora se parece com um botão -->
+          
           <div id="seleEstado" class="relative flex items-center bg-gray-600 border border-gray-600 rounded-full text-white px-4 py-[5px] mt-2 sm:mt-0">
             <span class="font-sans text-[14px] mr-1">Você está em</span>
-            <!-- Span que vai exibir o estado selecionado -->
+          
             <span id="estadoSelecionado" class="font-sans text-[14px]">Brasília - DF</span>
-            <!-- Ícone de seta para baixo -->
+            
             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
@@ -114,7 +115,7 @@
         </div>
       </div>
 
-<!-- Banner principal (STICKY) -->
+<!-- Banner principal-->
     <section id="topbar" class="sticky top-0 z-50 w-full shadow-none transition-shadow duration-300 h-[80px] border-t border-b px[104px]" style="background-color: rgb(247, 248, 252)">
       
       <div class="w-full max-w-[1108px] mx-auto h-full flex items-center justify-between">
@@ -131,9 +132,8 @@
               <input id="buscaCidade"
                   type="text"
                   placeholder="O que você procura?"
-                  class="w-[442px] h-[46px] appearance-none rounded-full border border-gray-200 bg-white pl-[20.8px] pr-[80px] pt-2 pb-2 text-base font-normal text-black placeholder:text-black shadow-none outline-none focus:outline-none caret-black"
-                  class="w-[442px] h-[46px] appearance-none rounded-full border border-gray-200 bg-white pl-[20.8px] pr-[80px] pt-2 pb-2 text-base font-sans font-normal text-black placeholder:text-black shadow-none outline-none focus:outline-none caret-black"
-                />
+                  class="w-[442px] h-[46px] appearance-none rounded-full border border-gray-200 bg-white pl-[20.8px] pr-[80px] pt-2 pb-2 text-base text-black placeholder:text-black shadow-none outline-none focus:outline-none caret-black" style="font-family: 'Museo Sans Rounded', sans-serif;"" />
+
                 <button
                   type="button"
                   aria-label="Buscar"
@@ -148,10 +148,6 @@
 
             </div>
         </header>
-
-
-
-
 
         <!-- ÍCONES E CARRINHO (direita) -->
         <div id="loginCriarConta" class="flex items-center gap-4">
@@ -196,17 +192,16 @@
     <section class="w-full max-w-[1108px]">
 
     <!-- 3. Card de informação -->
-    <section id="aviso" class="rounded-xlg border border-[#9B51DF] bg-[#ede5f2] flex justify-between items-start md:items-center p-3 md:pr-6 min-h-[75px] h-[137px] relative z-0 md:gap-x-3 mt-8 px-[60px] rounded-lg font-sans">
+    <section id="aviso" class="rounded-xlg border border-[#9B51DF] bg-[#ede5f2] flex justify-between items-start md:items-center p-2 md:pr-6 min-h-[75px] h-[138px] relative z-0 md:gap-x-3 mt-8 px-[60px] rounded-lg font-sans">
         <div class="flex items-center gap-2 text-gray-900">
         <img id="balaoAviso" src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/0e8af05917ffd98754cd39ef4a4448fd.svg" class="w-[34px] h-[34px]" alt="aviso">
-        <p id="textoPrincipal" class="px-2 text-[#444444] text-base"><strong>Fique atento!</strong><br>
-          O Grupo Sabin alerta que não envia links para download de aplicativos,
+        <p id="textoPrincipal" class=" ml-[5px] text-[#444444] text-base"><strong>Fique atento!</strong><br>
+          O Grupo Sabin alerta que <strong>não envia </strong>links para download de aplicativos,
            não solicita dados pessoais, bancários, senhas ou participação em sorteios.
             Também não realizamos cobranças via PIX, WhatsApp ou outros meios não oficiais.
              Todas as comunicações são feitas exclusivamente por meio de nossos canais oficiais.</p>
-     
-        </div>
-        <!-- Contêiner para o texto e o botão de fechar (agora como item flex) -->
+             </div>
+
         <div class="flex items-center gap-2 shrink-0">
           <p class="text-sm font-medium text-gray-700"><strong> Fechar</strong></p>
           <button id="fecharAviso" class="w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-colors" aria-label="Fechar aviso">
@@ -217,9 +212,9 @@
         </div>
     </section>
 
-    <!-- 4. Carrossel simples (scroll manual) -->
-        <section id="carrosselsimples" class="relative bg-white flex items-center gap-6 h-[250px] mb-6 mt-6">
-          <!-- Área rolável (agora controlada por JS) -->
+    <!-- 4. Carrossel simples -->
+        <section id="carrosselsimples" class="relative bg-white flex items-center gap-6 h-[250px] mb-6 mt-4">
+          <!-- Área rolável-->
           <div id="carrosselContainer" class="flex gap-6 overflow-hidden h-[250px] rounded-2xl scroll-smooth">
             <!-- Item 1 -->
             <div id="img0carro" class="carousel-item w-[700px] h-[250px] bg-gray-100 rounded-lg shrink-0 overflow-hidden">
@@ -244,12 +239,11 @@
 
           </div>
 
-          <!-- Contêiner para a Paginação/Barra de Progresso -->
+          
           <div id="carousel-pagination" class="absolute bottom-4 left-4 flex gap-2 z-10">
             <!-- Os botões de paginação serão injetados aqui pelo JavaScript -->
           </div>
 
-              <!-- Link fixo ao lado -->
               <a id="ficouMaisFacil" href="https://loja.sabin.com.br/entre?onboarding=true"
                 class="w-[384px] h-[250px] shrink-0 bg-red-50 rounded-2xl flex flex-col justify-center items-center text-red-700 hover:bg-red-100 transition">
                 <img src="https://loja.sabin.com.br/media/sabin_budgets/stores/1/upload_desktop.png" alt="Crie sua conta Sabin" class="w-full h-full object-cover rounded-2xl">
@@ -263,63 +257,212 @@
 
     <section class="w-full max-w-[1108px]">
       <div>
-          <h3 id="vocePrecisa" class="text-[22px] text-center font-bold text-#4b4b4b pb-5 pt-6 font-sans mt-[40px]">O que você precisa, o Sabin tem:</h3>
+          <h3 id="vocePrecisa" class="text-[22px] text-center font-bold text-#4b4b4b pb-5 pt-6 mt-[40px]"  >O que você precisa, o Sabin tem:</h3>
       </div>
 
       <section id="vocePrecisa" class="">
         <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-0 position-relative">
-          <div id="vacinas" class="relative h-auto rounded-xl shadow-md hover:-translate-y-2 hover:shadow-2xl transition flex items-center justify-center overflow-hidden">
+          
+          <div id="vacinas" class="relative h-auto rounded-xl shadow-md hover:-translate-y-2 hover:shadow-2xl transition flex items-center justify-center overflow-hidden ">
             <img src="https://loja.sabin.com.br/media/widgetsimages/v/a/vacinas.png" class="w-full rounded-xl h-[110px]">
-            <div class="absolute top-0 left-0 w-full p-3 bg-gradient-to-b from-black/50 to-transparent">
-              <p class="text-white font-sans font-bold text-lg">VACINAS</p>
+            <div class="absolute top-0 left-0 w-full p-3 bg-gradient-to-b from-black/50 to-transparent p-[20px]">
+              <p class="text-white font-sans font-bold text-[16px] pb-[8px]">VACINAS</p>
               <div class="h-[3px] w-1/4 bg-red-500 mt-1"></div>
             </div>
           </div>
+
           <div id="vacinaPCrianca" class="relative h-auto rounded-xl shadow-md hover:-translate-y-2 hover:shadow-2xl transition flex items-center justify-center overflow-hidden">
             <img src="https://loja.sabin.com.br/media/widgetsimages/v/a/vacinas_pra_crian_as.png" alt="vacina" class="w-full rounded-xl h-[110px]">
-            <div class="absolute top-0 left-0 w-full p-3 bg-gradient-to-b from-black/50 to-transparent">
-              <p class="text-white font-sans font-bold text-lg">VACINAS P/ CRIANÇAS</p>
+            <div class="absolute top-0 left-0 w-full p-3 bg-gradient-to-b from-black/50 to-transparent p-[20px]">
+              <p class="text-white font-sans font-bold text-[16px] pb-[8px]">VACINAS PARA CRIANÇAS</p>
               <div class="h-[3px] w-1/4 bg-red-500 mt-1"></div>
             </div>
           </div>
+          
           <div id="testesGeneticos" class="relative h-auto rounded-xl shadow-md hover:-translate-y-2 hover:shadow-2xl transition flex items-center justify-center overflow-hidden">
             <img src="https://loja.sabin.com.br/media/widgetsimages/t/e/teste_geneticos.png" alt="genetica" class="w-full rounded-xl h-[110px]">
-            <div class="absolute top-0 left-0 w-full p-3 bg-gradient-to-b from-black/50 to-transparent">
-              <p class="text-white font-sans font-bold text-lg">TESTES GENÉTICOS</p>
+            <div class="absolute top-0 left-0 w-full p-3 bg-gradient-to-b from-black/50 to-transparent p-[20px]">
+              <p class="text-white font-sans font-bold text-[16px] pb-[8px]">TESTES GENÉTICOS</p>
               <div class="h-[3px] w-1/4 bg-red-500 mt-1"></div>
             </div>
           </div>
+
           <div id="check_ups" class="relative h-auto rounded-xl shadow-md hover:-translate-y-2 hover:shadow-2xl transition flex items-center justify-center overflow-hidden">
             <img src="https://loja.sabin.com.br/media/widgetsimages/c/h/check_up_banner_destaque_loja___categorias_conversa_o___530_x_220px.png" alt="check_up" class=" rounded-xl w-full h-[110px]">
-            <div class="absolute top-0 left-0 w-full p-3 bg-gradient-to-b from-black/50 to-transparent">
-              <p class="text-white font-sans font-bold text-lg">CHECK-UPS</p>
+            <div class="absolute top-0 left-0 w-full p-3 bg-gradient-to-b from-black/50 to-transparent p-[20px]">
+              <p class="text-white font-sans font-bold text-[16px] pb-[8px]">CHECK-UPS</p>
               <div class="h-[3px] w-1/4 bg-red-500 mt-1"></div>
             </div>
           </div>
+          
         </div>
       </section>
     </section>
 
     <!-- 6. Em destaque -->
-    <section class="bg-gray-100 mt-[65px]">
-      <div class="max-w-7xl mx-auto">
-        <h2 class="text-2xl font-bold mb-6 text-gray-800">Em destaque</h2>
-        <div class="flex gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 pb-2">
-          <div class="w-60 bg-gray-100 rounded-lg p-4 flex flex-col justify-between shrink-0">
-            <p>Serviço 1</p>
-            <button class="mt-4 bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">CARRINHO</button>
+    <section id="emDestaques" class="w-full bg-[#f8f9fc] mt-[65px] mb-6 rounded-xl">
+  <div class="max-w-[1108px] mx-auto">
+    <!-- Título -->
+    <h2 class="text-lg md:text-xl font-bold text-gray-800 uppercase relative mb-8 px-4 md:px-0">
+      Em destaque
+      <span class="absolute left-0 bottom-[-6px] w-[60px] h-[3px] bg-red-500 rounded"></span>
+    </h2>
+
+    <div class="relative">
+      <!-- Carrossel -->
+      <div id="destaquesCarousel" class="flex gap-6 overflow-x-auto pb-6 px-4 md:px-0">
+        
+        <!-- Card 1 -->
+        <div id="destaque1" class="relative w-[234px] h-[180px] bg-white rounded-lg shadow-sm p-5 flex flex-col justify-between items-center shrink-0">
+          <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+            <img id="imagemNoTopo" src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
           </div>
-          <div class="w-60 bg-gray-100 rounded-lg p-4 flex flex-col justify-between shrink-0">
-            <p>Serviço 2</p>
-            <button class="mt-4 bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">CARRINHO</button>
+          <div class="w-full h-full flex items-center justify-center text-center">
+            <p class="text-[15px] font-semibold text-gray-800 leading-snug">Pacote Outubro Rosa</p>
           </div>
-          <div class="w-60 bg-gray-100 rounded-lg p-4 flex flex-col justify-between shrink-0">
-            <p>Serviço 3</p>
-            <button class="mt-4 bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">CARRINHO</button>
+          <div class="absolute bottom-5 left-5 right-5 flex justify-between items-end">
+            <div class="text-left">
+              <p class="text-[16px] font-bold text-gray-900 mt-1">R$ 110,00</p>
+            </div>
+            <div class="w-10 h-10 bg-green-500 rounded-full cursor-pointer hover:bg-green-600 flex items-center justify-center shrink-0">
+              <img id="imagemDoCarrinho" src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/72ddd775408239f5370d04922affcaa9.svg" alt="Carrinho" class="w-5 h-5">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div id="destaque2" class="relative w-[234px] h-[180px] bg-white rounded-lg shadow-sm p-5 flex flex-col justify-between items-center shrink-0">
+          <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+            <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
+          </div>
+          <div class="w-full h-full flex items-center justify-center text-center">
+            <p class="text-[15px] font-semibold text-gray-800 leading-snug">Pacote Novembro Azul</p>
+          </div>
+          <div class="absolute bottom-5 left-5 right-5 flex justify-between items-end">
+            <div class="text-left">
+              <p class="text-[16px] font-bold text-gray-900 mt-1">R$ 110,00</p>
+            </div>
+            <div class="w-10 h-10 bg-green-500 rounded-full cursor-pointer hover:bg-green-600 flex items-center justify-center shrink-0">
+              <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/72ddd775408239f5370d04922affcaa9.svg" alt="Carrinho" class="w-5 h-5">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div id="destaque3" class="relative w-[234px] h-[180px] bg-white rounded-lg shadow-sm p-5 flex flex-col justify-between items-center shrink-0">
+          <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+            <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
+          </div>
+          <div class="w-full h-full flex items-center justify-center text-center">
+            <p class="text-[15px] font-semibold text-gray-800 leading-snug">Pacote Dezembro Vermelho</p>
+          </div>
+          <div class="absolute bottom-5 left-5 right-5 flex justify-between items-end">
+            <div class="text-left">
+              <p class="text-[16px] font-bold text-gray-900 mt-1">R$ 140,00</p>
+            </div>
+            <div class="w-10 h-10 bg-green-500 rounded-full cursor-pointer hover:bg-green-600 flex items-center justify-center shrink-0">
+              <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/72ddd775408239f5370d04922affcaa9.svg" alt="Carrinho" class="w-5 h-5">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div id="destaque4" class="relative w-[234px] h-[180px] bg-white rounded-lg shadow-sm p-5 flex flex-col justify-between items-center shrink-0">
+          <span class="absolute top-3 right-3 bg-orange-400 text-white text-[10px] font-bold px-2 py-1 rounded">NOVO SERVIÇO</span>
+          <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+            <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
+          </div>
+          <div class="w-full h-full flex items-center justify-center text-center">
+            <p class="text-[14px] font-semibold text-gray-800 leading-snug">GenomaCare - Triagem Genética do Adulto</p>
+          </div>
+          <div class="absolute bottom-5 left-5 right-5 flex justify-between items-end">
+            <div class="text-left">
+              <p class="text-[16px] font-bold text-gray-900 mt-1">R$ 1.650,00</p>
+              <p class="text-[12px] text-gray-500">12x sem juros (R$137,50 cada)</p>
+            </div>
+            <div class="w-10 h-10 bg-green-500 rounded-full cursor-pointer hover:bg-green-600 flex items-center justify-center shrink-0">
+              <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/72ddd775408239f5370d04922affcaa9.svg" alt="Carrinho" class="w-5 h-5">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div id="destaque5" class="relative w-[234px] h-[180px] bg-white rounded-lg shadow-sm p-5 flex flex-col justify-between items-center shrink-0">
+          <span class="absolute top-3 right-3 bg-orange-400 text-white text-[10px] font-bold px-2 py-1 rounded">NOVO SERVIÇO</span>
+          <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+            <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
+          </div>
+          <div class="w-full h-full flex items-center justify-center text-center">
+            <p class="text-[15px] font-semibold text-gray-800 leading-snug">Teste de Glicemia</p>
+          </div>
+          <div class="absolute bottom-5 left-5 right-5 flex justify-between items-end">
+            <div class="text-left">
+              <p class="text-[16px] font-bold text-gray-900 mt-1">R$ 15,00</p>
+            </div>
+            <div class="w-10 h-10 bg-green-500 rounded-full cursor-pointer hover:bg-green-600 flex items-center justify-center shrink-0">
+              <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/72ddd775408239f5370d04922affcaa9.svg" alt="Carrinho" class="w-5 h-5">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div id="destaque6" class="relative w-[234px] h-[180px] bg-white rounded-lg shadow-sm p-5 flex flex-col justify-between items-center shrink-0">
+          <span class="absolute top-3 right-3 bg-orange-400 text-white text-[10px] font-bold px-2 py-1 rounded">NOVO SERVIÇO</span>
+          <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+            <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
+          </div>
+          <div class="w-full h-full flex items-center justify-center text-center">
+            <p class="text-[15px] font-semibold text-gray-800 leading-snug">Exame de Colesterol</p>
+          </div>
+          <div class="absolute bottom-5 left-5 right-5 flex justify-between items-end">
+            <div class="text-left">
+              <p class="text-[16px] font-bold text-gray-900 mt-1">R$ 35,00</p>
+            </div>
+            <div class="w-10 h-10 bg-green-500 rounded-full cursor-pointer hover:bg-green-600 flex items-center justify-center shrink-0">
+              <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/72ddd775408239f5370d04922affcaa9.svg" alt="Carrinho" class="w-5 h-5">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div id="destaque7" class="relative w-[234px] h-[180px] bg-white rounded-lg shadow-sm p-5 flex flex-col justify-between items-center shrink-0">
+          <span class="absolute top-3 right-3 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded">SERVIÇO EXCLUSIVO</span>
+          <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+            <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
+          </div>
+          <div class="w-full h-full flex items-center justify-center text-center">
+            <p class="text-[15px] font-semibold text-gray-800 leading-snug">Vacina HPV</p>
+          </div>
+          <div class="absolute bottom-5 left-5 right-5 flex justify-between items-end">
+            <div class="text-left">
+              <p class="text-[16px] font-bold text-gray-900 mt-1">R$ 299,00</p>
+            </div>
+            <div class="w-10 h-10 bg-green-500 rounded-full cursor-pointer hover:bg-green-600 flex items-center justify-center shrink-0">
+              <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/72ddd775408239f5370d04922affcaa9.svg" alt="Carrinho" class="w-5 h-5">
+            </div>
           </div>
         </div>
       </div>
-    </section>
+
+      <!-- Botões -->
+      <button id="prevButton" class="absolute left-0 bg-white rounded-full p-2 shadow-md hover:bg-gray-100" style="top: 50%; transform: translateY(-50%);">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button id="nextButton" class="absolute right-0 bg-white rounded-full p-2 shadow-md hover:bg-gray-100" style="top: 50%; transform: translateY(-50%);">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
+      <div id="destaquesPagination" class="flex justify-center items-center gap-2 pt-4"></div>
+    </div>
+  </div>
+</section>
+
+
+
 
     <!-- 7 e 8. Filtro + Ofertas -->
     <section class="bg-gray-50">
@@ -470,7 +613,7 @@
                   const header = document.getElementById('topbar');
                     if (!header) return;
 
-                  // estado inicial correto
+                  // estado inicial
                   header.classList.remove('shadow-sm', 'shadow', 'shadow-md');
                   header.classList.add('shadow-none');
 
@@ -491,8 +634,8 @@
         </script>
 
         <script>
-          // Script para atualizar o texto do estado selecionado
-          document.addEventListener('DOMContentLoaded', () => {
+
+            document.addEventListener('DOMContentLoaded', () => {
             const seletor = document.getElementById('seletorDeEstado');
             const displayEstado = document.getElementById('estadoSelecionado');
 
@@ -505,8 +648,8 @@
         </script>
 
         <script>
-          // Script para o carrossel automático
-          document.addEventListener('DOMContentLoaded', () => {
+
+            document.addEventListener('DOMContentLoaded', () => {
             const carouselContainer = document.getElementById('carrosselContainer');
             if (!carouselContainer) return;
             
@@ -515,10 +658,10 @@
 
             const paginationContainer = document.getElementById('carousel-pagination');
             let currentIndex = 0;
-            const scrollInterval = 3000; // 3 segundos
+            const scrollInterval = 3000;
             let intervalId = null;
 
-            // Cria os botões de paginação
+            
             for (let i = 0; i < carouselItems.length; i++) {
               const button = document.createElement('button');
               button.className = 'pagination-button';
@@ -537,16 +680,16 @@
               for (let i = 0; i < paginationButtons.length; i++) {
                 paginationButtons[i].classList.remove('active');
                 const progressBar = paginationButtons[i].querySelector('.progress-bar');
-                progressBar.style.transition = 'width 0s'; // Reseta transição
-                progressBar.style.width = '0%'; // Reseta a largura
+                progressBar.style.transition = 'width 0s'; 
+                progressBar.style.width = '0%';
 
                 if (i === currentIndex) {
                   paginationButtons[i].classList.add('active');
-                  // Força o navegador a aplicar o reset antes de iniciar a nova animação
+
                   setTimeout(() => {
                     progressBar.style.transition = `width ${scrollInterval / 1000}s linear`;
                     progressBar.style.width = '100%';
-                  }, 50); // Pequeno delay para garantir o reset
+                  }, 50);
                 }
               }
             };
@@ -559,7 +702,7 @@
                 carouselContainer.scrollTo({ left: scrollPosition, behavior: 'smooth' });
               }
               updatePagination();
-              // Reinicia o intervalo
+              
               clearInterval(intervalId);
               intervalId = setInterval(scrollToNextItem, scrollInterval);
             };
@@ -569,12 +712,12 @@
               goToSlide(nextIndex);
             };
 
-            // Inicia o carrossel
+            
             goToSlide(0);
           });
         </script>
         <script>
-          // Script para fechar o aviso
+          
           document.addEventListener('DOMContentLoaded', () => {
             const avisoSection = document.getElementById('aviso');
             const fecharButton = document.getElementById('fecharAviso');
@@ -586,6 +729,97 @@
             }
           });
         </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+                const carousel = document.getElementById('destaquesCarousel');
+                const prevButton = document.getElementById('prevButton');
+                const nextButton = document.getElementById('nextButton');
+                const paginationContainer = document.getElementById('destaquesPagination');
+
+                if (!carousel || !prevButton || !nextButton || !paginationContainer) return;
+
+                const cards = carousel.querySelectorAll('.shrink-0');
+                const cardWidth = cards.length > 0 ? cards[0].offsetWidth : 0;
+                const cardGap = 24; // Corresponds to gap-6
+                const scrollAmount = cardWidth + cardGap;
+
+                const totalDots = 5;
+
+                // Create pagination dots
+                for (let i = 0; i < totalDots; i++) {
+                    const dot = document.createElement('button');
+                    dot.classList.add('destaque-pagination-dot');
+                    dot.addEventListener('click', () => {
+                        carousel.scrollTo({
+                            left: i * scrollAmount,
+                            behavior: 'smooth'
+                        });
+                    });
+                    paginationContainer.appendChild(dot);
+                }
+
+                const dots = paginationContainer.querySelectorAll('.destaque-pagination-dot');
+
+                const updatePagination = () => {
+                    const currentIndex = Math.round(carousel.scrollLeft / scrollAmount);
+                    dots.forEach((dot, index) => {
+                        if (index === currentIndex) {
+                            dot.classList.add('active');
+                        } else {
+                            dot.classList.remove('active');
+                        }
+                    });
+                };
+
+                prevButton.addEventListener('click', () => {
+                    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+
+                nextButton.addEventListener('click', () => {
+                    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+
+                carousel.addEventListener('scroll', updatePagination);
+                updatePagination(); // Initial call
+          });
+        </script>
+
+        <style>
+          .destaque-pagination-dot {
+              width: 12px;
+              height: 12px;
+              border-radius: 50%;
+              border: 2px solid #ef4444; /* red-500 */
+              background-color: transparent;
+              cursor: pointer;
+              transition: background-color 0.3s ease;
+          }
+          .destaque-pagination-dot.active {
+              background-color: #ef4444; /* red-500 */
+          }
+          /* Oculta a barra de rolagem do carrossel de destaques */
+          #destaquesCarousel {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+          }
+          #destaquesCarousel::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+          }
+        </style>
+
+ 
+</body>
+</html>
+          #destaquesCarousel {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+          }
+          #destaquesCarousel::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+          }
+        </style>
+
  
 </body>
 </html>
