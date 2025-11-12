@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     // CONTROLA SOMBRA DA BARRA FIXA
     const header = document.getElementById('topbar');
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // acertar estado inicial (caso a página já esteja rolada)
+        // roda no load para acertar estado inicial (caso a página já esteja rolada)
         checkScroll();
         window.addEventListener('scroll', checkScroll, { passive: true });
     }
