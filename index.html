@@ -25,12 +25,25 @@
       },
     }
   </script>
-  <link rel="stylesheet" href="style.css">
+  <style type="text/tailwindcss">
+    @layer base {
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      input:-webkit-autofill:active {
+        -webkit-text-fill-color: #000;
+        -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+        transition: background-color 5000s ease-in-out 0s;
+      }
+      #destaquesCarousel {
+        scrollbar-width: none; /* Firefox */
+      }
+    }
+  </style>
 </head>
 
 <body class="bg-white font-sans">
 
-  <!-- 1. Cabeçalho -->
   <div id="cablh" class=" relative inset-x-0 bg-white z-40 w-full px-4 font-sans text-[12px] leading-5 h-[44px]">
     <div class="w-[1108px] mx-auto flex flex-wrap items-center px-0 h-full text-sm text-gray-700 gap-x-20 justify-between">
       <div class="flex flex-wrap gap-x-[24px]">
@@ -48,7 +61,7 @@
         <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
         </svg>
-        <!-- Selecione um estado -->
+
         <select id="seletorDeEstado" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer text-black">
           <option selected>Brasília - DF</option>
           <option>Goiás</option>
@@ -83,16 +96,13 @@
     </div>
   </div>
 
-  <!-- Banner principal-->
   <section id="topbar" class="sticky top-0 z-50 w-full shadow-none transition-shadow duration-300 h-[80px] border-t border-b px[104px]" style="background-color: rgb(247, 248, 252)">
 
     <div class="w-full max-w-[1108px] mx-auto h-full flex items-center justify-between">
-      <!-- LOGO (esquerda) -->
       <a href="https://loja.sabin.com.br/?___store=brasilia_df" class="flex items-center">
         <img src="https://loja.sabin.com.br/media/favicon/default/Logo_-_vermelha-4k.png" alt="sabin" class="w-[85.33px] h-auto" />
       </a>
 
-      <!-- BUSCA (centro) -->
       <header class="sticky top-0 z-20 bg-none transition-shadow duration-300">
         <div class="relative inline-block mx-auto my-2">
 
@@ -105,7 +115,6 @@
         </div>
       </header>
 
-      <!-- ÍCONES E CARRINHO (direita) -->
       <div id="loginCriarConta" class="flex items-center gap-4">
         <div class="text-right">
           <div id="entreCadastro" class="text-sm font-normal uppercase text-black leading-none">ENTRE / CADASTRE-SE</div>
@@ -120,7 +129,7 @@
           <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/8b72f71ed3a9759e7c534bdd73675962.svg" alt="Menu" class="w-18 h-auto px-[4px]">
         </button>
 
-        <div id="fundo-carrinho-fixo" style="background-color: #ff3b3b; width: 100px; height: 100px; text-align: center; border-radius: 0px 0px 8px 8px; position: relative;" class="mt-5">
+        <div id="fundo-carrinho-fixo" style="background-color: #ff3b3b; width: 100px; height: 100px; text-align: center; border-radius: 0px 0px 8px 8px; position: relative; left: 1px;" class="mt-5 border-[#ff3b3b]">
           <div style="position: relative; display: inline-block;">
             <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/11a91bad46c265fb5d9e106769ae9508.jpg" alt="Carrinho" style="width: 90px;">
             <span id="textoCarrinho" style="position: absolute; top: 7px; right: 15px; background: #4a4a4a00; color: white; font-weight: bold; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-family: 'Museo Sans Rounded', sans-serif;">
@@ -140,13 +149,10 @@
   </section>
 
 
-  <!--MAIN-->
-
   <main class="w-full flex flex-col items-center justify-center gap-6 px-4 md:px-0"">
 
     <section class=" w-full max-w-[1108px]">
 
-      <!-- 3. Card de informação -->
       <section id="aviso" class="rounded-xlg border border-[#9B51DF] bg-[#ede5f2] flex justify-between items-start md:items-center p-2 md:pr-6 min-h-[75px] h-[138px] relative z-0 md:gap-x-3 mt-8 px-[60px] rounded-lg font-sans">
         <div class="flex items-center gap-2 text-gray-900">
           <img id="balaoAviso" src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/0e8af05917ffd98754cd39ef4a4448fd.svg" class="w-[34px] h-[34px]" alt="aviso">
@@ -167,27 +173,20 @@
         </div>
       </section>
 
-      <!-- 4. Carrossel simples -->
       <section id="carrosselsimples" class="relative bg-white flex items-center gap-6 h-[250px] mb-6 mt-4">
-        <!-- Área rolável-->
-        <div id="carrosselContainer" class="flex gap-6 overflow-hidden h-[250px] rounded-2xl scroll-smooth">
-          <!-- Item 1 -->
+        <div id="carrosselContainer" class="flex gap-6 overflow-hidden h-[250px] rounded-2xl scroll-smooth no-scrollbar">
           <div id="img0carro" class="carousel-item w-[700px] h-[250px] bg-gray-100 rounded-lg shrink-0 overflow-hidden">
             <img src="https://loja.sabin.com.br/media/banners/_/b/_banner_loja_tablet_1108x358px.jpg" alt="corrida" class="w-full h-full object-cover object-center">
           </div>
-          <!-- Item 2 -->
           <div id="img1carro" class="carousel-item w-[700px] h-[250px] bg-gray-100 rounded-lg shrink-0 overflow-hidden">
             <img src="https://loja.sabin.com.br/media/banners/b/a/banner_1__1.jpg" alt="prevensão" class="w-full h-full object-cover object-center">
           </div>
-          <!-- Item 3 -->
           <div id="img2carro" class="carousel-item w-[700px] h-[250px] bg-gray-100 rounded-lg shrink-0 overflow-hidden">
             <img src="https://loja.sabin.com.br/media/banners/a/r/arexvy_tablete__1108x358__3.png" alt="Vacina" class="w-full h-full object-cover object-center">
           </div>
-          <!-- Item 4 -->
           <div id="img3carro" class="carousel-item w-[700px] h-[250px] bg-gray-100 rounded-lg shrink-0 overflow-hidden">
             <img src="https://loja.sabin.com.br/media/banners/b/a/banner_hz_setembro_mobile_-_576_x_290px_2.jpg" alt="Banner Setembro" class="w-full h-full object-cover object-center">
           </div>
-          <!-- Item 5 -->
           <div id="img4carro" class="carousel-item w-[700px] h-[250px] bg-gray-100 rounded-lg shrink-0 overflow-hidden">
             <img src="https://loja.sabin.com.br/media/banners/i/n/infus_o_banner_loja_tablet.jpg" alt="Infusão Banner" class="w-full h-full object-cover object-center">
           </div>
@@ -196,7 +195,6 @@
 
 
         <div id="carousel-pagination" class="absolute bottom-4 left-4 flex gap-2 z-10">
-          <!-- Os botões de paginação serão injetados aqui pelo JavaScript -->
         </div>
 
         <a id="ficouMaisFacil" href="https://loja.sabin.com.br/entre?onboarding=true" class="w-[384px] h-[250px] shrink-0 bg-red-50 rounded-2xl flex flex-col justify-center items-center text-red-700 hover:bg-red-100 transition">
@@ -206,8 +204,6 @@
 
       </section>
 
-
-      <!-- 5. Seção com destaques -->
 
       <section class="w-full max-w-[1108px]">
         <div>
@@ -253,23 +249,18 @@
         </section>
       </section>
 
-    <!-- 6. Em destaque -->
     
     <section id="emDestaques" class="w-full p-[18px] bg-[#f8f9fc] mt-[65px] mb-6 rounded-lg" style="height: 315px;">
         <div class="max-w-[1108px] mx-auto relative">
           
-          <!-- Título -->
           <h2 class="text-[17px] font-bold text-gray-800 uppercase relative mb-8 px-[40px]">
             Em destaque
             <span id="linhaunderDestaques" class="absolute left-[40px] bottom-[-6px] w-[120px] h-[3px] bg-red-500 rounded"></span>
           </h2>
 
 
-          <!-- Carrossel -->
+          <div id="destaquesCarousel" class="flex gap-6 overflow-x-auto px-[40px] no-scrollbar" style="height: 200px; width: 1070px; position: relative;">
 
-          <div id="destaquesCarousel" class="flex gap-6 overflow-x-auto px-[40px]" style="height: 200px; width: 1070px; position: relative;">
-
-            <!-- Card 1 -->
             <div id="destaque1" class="relative w-[234px] h-[180px] bg-white rounded-lg shadow-sm p-5 flex flex-col justify-between items-center shrink-0">
               <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
                 <img id="imagemNoTopo" src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
@@ -288,7 +279,6 @@
               </div>
             </div>
 
-            <!-- Card 2 -->
             <div id="destaque2" class="relative w-[234px] h-[180px] bg-white rounded-lg shadow-sm p-5 flex flex-col justify-between items-center shrink-0">
               <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
                 <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
@@ -306,7 +296,6 @@
               </div>
             </div>
 
-            <!-- Card 3 -->
             <div id="destaque3" class="relative w-[234px] h-[180px] bg-white rounded-lg shadow-sm p-5 flex flex-col justify-between items-center shrink-0">
               <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
                 <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
@@ -324,7 +313,6 @@
               </div>
             </div>
 
-            <!-- Card 4 -->
             <div id="destaque4" class="relative w-[234px] h-[180px] bg-white rounded-[10px] shadow-md p-5 flex flex-col justify-between items-center shrink-0">
 
               <div class="absolute top-0 left-0 w-full flex justify-end">
@@ -333,12 +321,10 @@
                 </span>
               </div>
 
-              <!-- Conteúdo -->
               <div class="mt-6 text-center leading-snug">
                 <p class="text-[14px] font-semibold text-gray-800">GenomaCare - Triagem Genética do Adulto</p>
               </div>
 
-              <!-- Preço e botão -->
               <div class="w-full flex justify-between items-end mt-4">
                 <div class="text-left">
                   <p class="text-[16px] font-bold text-gray-900">R$ 1.650,00</p>
@@ -351,7 +337,6 @@
             </div>
 
 
-            <!-- Card 5 -->
             <div id="destaque5" class="relative w-[234px] h-[180px] bg-white rounded-[10px] shadow-md p-5 flex flex-col justify-between items-center shrink-0">
 
               <div class="absolute top-0 left-0 w-full flex justify-end">
@@ -359,11 +344,9 @@
                   NOVO SERVIÇO
                 </span>
               </div>
-              <!-- Conteúdo -->
               <div class="mt-6 text-center leading-snug">
                 <p class="text-[14px] font-semibold text-gray-800">Teste de Glicemia</p>
               </div>
-              <!-- Preço e botão -->
               <div class="w-full flex justify-between items-end mt-4">
                 <div class="text-left">
                   <p class="text-[16px] font-bold text-gray-900">R$ 15,00</p>
@@ -376,7 +359,6 @@
               </div>
             </div>
 
-            <!-- Card 6 -->
             <div id="destaque6" class="relative w-[234px] h-[180px] bg-white rounded-[10px] shadow-md p-5 flex flex-col justify-between items-center shrink-0">
               <div class="absolute top-0 left-0 w-full flex justify-end">
                 <span class="bg-orange-400 text-white text-[10px] font-bold px-3 py-[3px] rounded-tr-[10px] rounded-bl-[6px]">
@@ -398,7 +380,6 @@
               </div>
             </div>
 
-            <!-- Card 7 -->
             <div id="destaque7" class="relative w-[234px] h-[180px] bg-white rounded-lg shadow-sm p-5 flex flex-col justify-between items-center shrink-0">
 
               <div class="absolute top-0 left-0 w-full flex justify-end">
@@ -423,7 +404,6 @@
 
           <div id="destaquesPagination" class="flex justify-center items-center gap-2 pt-4"></div>
 
-          <!-- Botões de Navegação -->
           <button id="prevButton" class="absolute bg-white rounded-full p-2 shadow-md hover:bg-gray-100" style="left: -43px; top: 55%; transform: translateY(-50%);">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -440,7 +420,6 @@
 
 
 
-      <!-- 7 e 8. Filtro + Ofertas -->
       <section class="bg-gray-50">
         <div class="flex flex-col lg:flex-row gap-6 px-4">
           <div id="filtroDeOfertas">
@@ -461,19 +440,14 @@
             </aside>
           </div>
           <div id="ofertasDoFiltro" class="flex-1 bg-white p-6 rounded-lg shadow">
-            <!-- Page 1 -->
             <div id="ofertas-page-1" class="ofertas-page">
               <div class="grid grid-cols-3 gap-6">
-                <!-- 9 cards -->
 
-                <!-- Card 1 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Pesquisa de Larvas - Baerman E Moraes (8° Amostra)</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -488,14 +462,11 @@
                   </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Ácido S Fenilmercapturico</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -510,14 +481,11 @@
                   </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Sangue Oculto - Pesquisa (6° Amostra)</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -532,14 +500,11 @@
                   </div>
                 </div>
 
-                <!-- Card 4 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Hidroxipireno</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -554,14 +519,11 @@
                   </div>
                 </div>
 
-                <!-- Card 5 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Rotavirus - (Pesquisa Fezes)</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -576,14 +538,11 @@
                   </div>
                 </div>
 
-                <!-- Card 6 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">IgE Específico Para Lagosta Vermelha</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -598,14 +557,11 @@
                   </div>
                 </div>
 
-                <!-- Card 7 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Ige Específico Albumina Soro De Gato (E220)</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -620,14 +576,11 @@
                   </div>
                 </div>
 
-                <!-- Card 8 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">IgE Multiplo Para Tx9</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -642,14 +595,11 @@
                   </div>
                 </div>
 
-                <!-- Card 9 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Detecção Molecular De Trichomonas Vaginalis (Urina)</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -666,19 +616,14 @@
               </div>
             </div>
 
-            <!-- Page 2 -->
-
             <div id="ofertas-page-2" class="ofertas-page hidden">
               <div class="grid grid-cols-3 gap-6">
 
-                <!-- Card 1 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Check-up Básico</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -693,14 +638,11 @@
                   </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Vacina HPV</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -715,14 +657,11 @@
                   </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Hemograma</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -737,14 +676,11 @@
                   </div>
                 </div>
 
-                <!-- Card 4 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">IgE Multiplo Para Tx5</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -759,14 +695,11 @@
                   </div>
                 </div>
 
-                <!-- Card 5 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Ácido Butoxiacético</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -781,14 +714,11 @@
                   </div>
                 </div>
 
-                <!-- Card 6 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">IgE Espessífico Para Lã de Ovelha</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -803,14 +733,11 @@
                   </div>
                 </div>
 
-                <!-- Card 7 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">IgE Espessífico Para Avena Setiva (G14)</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -825,14 +752,11 @@
                   </div>
                 </div>
 
-                <!-- Card 8 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Fluvoxamina</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -847,14 +771,11 @@
                   </div>
                 </div>
 
-                <!-- Card 9 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Hoffman - Pesquisa 3° Amostra</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -871,18 +792,14 @@
               </div>
             </div>
 
-            <!-- Page 3 -->
             <div id="ofertas-page-3" class="ofertas-page hidden">
               <div class="grid grid-cols-3 gap-6">
 
-                <!-- Card 1 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Colesterol Hdl</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -897,14 +814,11 @@
                   </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Cortisol Salivar (18 Horas)</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -919,14 +833,11 @@
                   </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Progesterona Após Pregynil</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -941,14 +852,11 @@
                   </div>
                 </div>
 
-                <!-- Card 4 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Check-up Básico</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -963,14 +871,11 @@
                   </div>
                 </div>
 
-                <!-- Card 5 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Vacina HPV</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -985,14 +890,11 @@
                   </div>
                 </div>
 
-                <!-- Card 6 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Hemograma</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -1007,14 +909,11 @@
                   </div>
                 </div>
 
-                <!-- Card 7 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Anticospos Anti Dna</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -1029,14 +928,11 @@
                   </div>
                 </div>
 
-                <!-- Card 8 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">1,5 Anidroglucitol</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -1051,14 +947,11 @@
                   </div>
                 </div>
 
-                <!-- Card 9 -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="flex justify-start p-2">
-                    <div class="bg-red-100 p-1 rounded">
-                      <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/2cf6ecb1b1fa5d14a3b26b45190f9b8d.svg" alt="Ícone" class="w-4 h-4">
-                    </div>
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
-                  <div class="px-4 pb-4 text-center">
+                  <div class="px-4 pt-12 pb-4 text-center">
                     <p class="font-semibold text-gray-900 min-h-[48px]">Somatomedina - lgf-2</p>
                   </div>
                   <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
@@ -1078,114 +971,211 @@
 
 
 
-            <!-- Controles das páginas -->
             <div id="ofertas-pagination" class="flex justify-center items-center gap-4 mt-6">
-              <button data-page="1" class="ofertas-page-btn active">1</button>
-              <button data-page="2" class="ofertas-page-btn">2</button>
-              <button data-page="3" class="ofertas-page-btn">3</button>
+              <button data-page="1" class="ofertas-page-btn px-4 py-2 border rounded cursor-pointer transition-colors duration-300 bg-red-500 text-white border-red-500">1</button>
+              <button data-page="2" class="ofertas-page-btn px-4 py-2 border rounded cursor-pointer transition-colors duration-300 bg-white hover:bg-gray-100 border-gray-300">2</button>
+              <button data-page="3" class="ofertas-page-btn px-4 py-2 border rounded cursor-pointer transition-colors duration-300 bg-white hover:bg-gray-100 border-gray-300">3</button>
             </div>
+            
           </div>
         </div>
       </section>
 
-      <!-- 9. Serviços mais buscados -->
-      <section class="bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-          <h2 class="text-2xl font-bold mb-6">Serviços mais buscados</h2>
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="p-6 border rounded-lg text-center">
-              <p class="font-semibold mb-2">Hemograma Completo</p>
-              <p class="text-red-600 font-bold">R$ 69,00</p>
-              <button class="mt-3 bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700">CARRINHO Comprar</button>
+      <section id="serviçosMaisBuscados" class="bg-white py-8">
+        <div class="max-w-7xl mx-auto px-0">
+          <h2 class="text-xl font-bold mb-6">Serviços mais buscados:</h2>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition flex flex-col">
+              <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
+              </div>
+              <div class="px-4 pt-12 pb-4 text-center flex-grow">
+                <p class="font-semibold text-gray-900 min-h-[48px]">Vacina Quadrivalente da Gripe (Cepas 2025)</p>
+              </div>
+              <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
+                <div class="bg-purple-50 text-purple-600 text-sm font-medium p-3 mx-4 mb-3 rounded-md">
+                  Serviço fora de estoque no momento.
+                </div>
+                <div class="mt-4 flex justify-center gap-3">
+                  <button class="px-4 py-1.5 border border-gray-300 rounded-full text-sm font-semibold hover:bg-gray-100">SAIBA MAIS</button>
+                  <button class="px-4 py-1.5 bg-gray-700 text-white rounded-full text-sm font-semibold hover:bg-gray-800">AVISE-ME</button>
+                </div>
+              </div>
             </div>
-            <div class="p-6 border rounded-lg text-center opacity-70">
-              <p class="font-semibold mb-2">Vitamina D</p>
-              <p class="text-gray-600">Serviço indisponível</p>
-              <button class="mt-3 border border-gray-400 text-gray-700 px-4 py-1 rounded hover:bg-gray-100">Avise-me</button>
+
+            <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition flex flex-col">
+              <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
+              </div>
+              <div class="px-4 pt-12 pb-4 text-center flex-grow">
+                <p class="font-semibold text-gray-900 min-h-[48px]">Sexagem Fetal</p>
+              </div>
+              <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
+                <p class="text-black font-bold text-lg">R$ 280,00</p>
+                <p class="text-gray-500 text-sm font-normal">2x sem juros (R$140,00 cada)</p>
+                <div class="mt-4 flex justify-center gap-3">
+                  <button class="px-4 py-1.5 border border-gray-300 rounded-full text-sm font-semibold hover:bg-gray-100">SAIBA MAIS</button>
+                  <button class="px-4 py-1.5 bg-green-500 text-white rounded-full text-sm font-semibold hover:bg-green-600 flex items-center">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/72ddd775408239f5370d04922affcaa9.svg" alt="Carrinho" class="w-4 h-4 mr-1"> COMPRAR
+                  </button>
+                </div>
+              </div>
             </div>
-            <div class="p-6 border rounded-lg text-center">
-              <p class="font-semibold mb-2">Check-up Executivo</p>
-              <p class="text-red-600 font-bold">R$ 499,00</p>
-              <button class="mt-3 bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700">CARRINHO Comprar</button>
+
+            <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition flex flex-col">
+              <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
+              </div>
+              <div class="px-4 pt-12 pb-4 text-center flex-grow">
+                <p class="font-semibold text-gray-900 min-h-[48px]">Check-up Saúde em Dia Mulher</p>
+              </div>
+              <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
+                <p class="text-black font-bold text-lg">R$ 120,00</p>
+                <div class="mt-4 flex justify-center gap-3">
+                  <button class="px-4 py-1.5 border border-gray-300 rounded-full text-sm font-semibold hover:bg-gray-100">SAIBA MAIS</button>
+                  <button class="px-4 py-1.5 bg-green-500 text-white rounded-full text-sm font-semibold hover:bg-green-600 flex items-center">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/72ddd775408239f5370d04922affcaa9.svg" alt="Carrinho" class="w-4 h-4 mr-1"> COMPRAR
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
+
+            <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition flex flex-col">
+              <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
+              </div>
+              <div class="px-4 pt-12 pb-4 text-center flex-grow">
+                <p class="font-semibold text-gray-900 min-h-[48px]">Somatomedina IGF-1</p>
+              </div>
+              <div class="bg-gray-50 border-t border-gray-200 text-center py-4">
+                <p class="text-black font-bold text-lg">R$ 161,00</p>
+                <div class="mt-4 flex justify-center gap-3">
+                  <button class="px-4 py-1.5 border border-gray-300 rounded-full text-sm font-semibold hover:bg-gray-100">SAIBA MAIS</button>
+                  <button class="px-4 py-1.5 bg-green-500 text-white rounded-full text-sm font-semibold hover:bg-green-600 flex items-center">
+                    <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/72ddd775408239f5370d04922affcaa9.svg" alt="Carrinho" class="w-4 h-4 mr-1"> COMPRAR
+                  </button>
+                </div>
+              </div>
+            </div>
+
         </div>
-      </section>
+      </div>
+    </section>
+
 
   </main>
 
-  <!-- 9.1 Seção de assinatura -->
-  <section class="py-12 bg-gray-100 text-black">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <h2 class="text-2xl font-bold mb-6">Assine para receber novidades</h2>
-      <form class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-        <input type="text" placeholder="Seu nome" class="px-4 py-2 rounded-md text-gray-900 w-full sm:w-64 focus:outline-none" />
-          <input type="email" placeholder="Seu email"
-                 class="px-4 py-2 rounded-md text-gray-900 w-full sm:w-64 focus:outline-none" />
-          <button type="submit" class="bg-white text-red-700 px-6 py-2 rounded-md font-semibold hover:bg-gray-200">
-            Assinar
-          </button>
-        </form>
+  <section class="py-16 bg-gray-50 text-gray-800">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    
+    <img id="envelope" src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/b409a6f3f6d4ba8f5d606e2cedbf13b2.svg" alt="envelope" class="mx-auto justify-center">
+    <h2 class="text-xl sm:text-2xl font-bold mb-3">SUA SAÚDE É A NOSSA PRIORIDADE</h2>
+    <p class="text-sm mb-6">Assine o nosso boletim informativo e receba ofertas, dicas de saúde e muito mais.</p>
+    
+    <form class="flex flex-col sm:flex-row justify-center gap-3 mb-4">
+      <input type="text" placeholder="Seu nome"
+             class="px-4 py-2 rounded-full border border-gray-300 w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-red-500" />
+      <input type="email" placeholder="Seu melhor email"
+             class="px-4 py-2 rounded-full border border-gray-300 w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-red-500" />
+      <button type="submit"
+              class="bg-red-500 hover:bg-red-600 text-white font-semibold rounded-full px-6 py-2 transition">
+        ASSINAR
+      </button>
+    </form>
+    <p class="text-xs text-gray-500 mb-12">
+      Ao se cadastrar você concorda em receber nossos e-mails conforme a nossa 
+      <a href="#" class="underline hover:text-red-600">política de privacidade</a>.
+    </p>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-sm text-left max-w-5xl mx-auto">
+    <div id="gradeInferior" class="flex justify-between items-start gap-10 text-left text-sm max-w-5xl mx-auto">
+      <img id="logoSabinVermelho" src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/fc789a352a9c7b24b5d912940d4ef8a7.svg" alt="Ícone Sabin" class="w-10 shrink-0">
+      
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 flex-grow">
         <div>
-          <h4 class="font-bold mb-2">Serviços</h4>
-          <ul class="space-y-1">
-            <li><a href="#" class="hover:underline">Exames</a></li>
-            <li><a href="#" class="hover:underline">Vacinas</a></li>
-            <li><a href="#" class="hover:underline">Check-ups</a></li>
-            <li><a href="#" class="hover:underline">Agendamentos</a></li>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-2">
+              <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/c37e454497277db8745e718cd389f469.svg" class="w-5" alt="">
+              <span><strong>Exames</strong> Covid-19</span>
+            </li>
+          <li class="flex items-center gap-2">
+            <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/07da5cdde123277992841621b39454b1.svg" class="w-5" alt="">
+            <span><strong>Exames</strong> Laboratoriais</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/7c886680e0e43b715714f05881da141f.svg" class="w-5" alt="">
+            <span><strong>Vacinas</strong></span>
+          </li>
+          <li class="flex items-center gap-2">
+            <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/7c886680e0e43b715714f05881da141f.svg" class="w-5" alt="">
+            <span><strong>Pacotes</strong> infantis</span>
+          </li>
+        </ul>
+        </div>
+
+        <div>
+          <ul class="space-y-2">
+            <li><a href="#" class="underline">Fale Conosco</a></li>
+            <li><a href="#" class="underline">Nossas Unidades</a></li>
+            <li><a href="#" class="underline">Termos de Uso</a></li>
+            <li><a href="#" class="underline">Perguntas Frequentes</a></li>
           </ul>
         </div>
+
         <div>
-          <h4 class="font-bold mb-2">Informações</h4>
-          <ul class="space-y-1">
-            <li><a href="#" class="hover:underline">Fale Conosco</a></li>
-            <li><a href="#" class="hover:underline">Unidades</a></li>
-            <li><a href="#" class="hover:underline">Termos de Uso</a></li>
-            <li><a href="#" class="hover:underline">Perguntas Frequentes</a></li>
-          </ul>
+          <h4 class="font-bold mb-3">Baixe nosso aplicativo</h4>
+          <a href="#" class="block mb-3">
+            <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/81a8a6c8eca32b7034d492ee7579f41d.svg"
+                 alt="App Store" class="w-32 mx-auto sm:mx-0">
+          </a>
+          <a href="#" class="block">
+            <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/bbc9caa962f14ccef7217cfc696f4b79.svg"
+                 alt="Google Play" class="w-32 mx-auto sm:mx-0">
+          </a>
         </div>
+
         <div>
-          <h4 class="font-bold mb-2">Baixe o App</h4>
-          <button class="block w-full border border-white rounded-md px-3 py-1 mt-1 hover:bg-white hover:text-red-700">App Store</button>
-          <button class="block w-full border border-white rounded-md px-3 py-1 mt-2 hover:bg-white hover:text-red-700">Google Play</button>
-        </div>
-        <div>
-          <h4 class="font-bold mb-2">Contato</h4>
-          <p class="text-sm">0800-123-4567</p>
-          <div class="flex flex-wrap gap-2 mt-2 text-lg">
-            <a href="#" class="hover:text-gray-200"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/351732e41d43842319969b45c4a49cbc.svg"></a>
-            <a href="#" class="hover:text-gray-200"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/79eb207d4ef73e5e0a6e468dc440cd7f.svg"></a>
-            <a href="#" class="hover:text-gray-200"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/54409d8e1020532d6df505616c0c7dbb.svg"></a>
-            <a href="#" class="hover:text-gray-200"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/b4400c9936041745ec3ee70716fd1b69.svg"></a>
-            <a href="#" class="hover:text-gray-200"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/95d21f4a3ed5f528b50d8ef9db5a0533.svg"></a>
+          <h4 class="font-bold mb-2">Contato:</h4>
+          <p class="text-sm font-semibold mb-4">(61) 3329-8000</p>
+          <h4 class="font-bold mb-2">Nossas redes:</h4>
+          <div class="flex gap-3 mt-2">
+
+            <a href="#"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/351732e41d43842319969b45c4a49cbc.svg" class="w-5" alt="Instagram"></a>
+            <a href="#"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/79eb207d4ef73e5e0a6e468dc440cd7f.svg" class="w-5" alt="Facebook"></a>
+            <a href="#"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/54409d8e1020532d6df505616c0c7dbb.svg" class="w-5" alt="Linkedin"></a>
+            <a href="#"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/b4400c9936041745ec3ee70716fd1b69.svg" class="w-5" alt="YouTube"></a>
+            <a href="#"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/edff8810323965ea12c5c947d2e892e2.svg" class="w-5" alt="x"></a>
+            <a href="#"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/95d21f4a3ed5f528b50d8ef9db5a0533.svg" class="w-5" alt="Spotify"></a>
+            <a href="#"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/fb448e0a6790375ac6658606ee922444.svg" class="w-5" alt="Tiktok"></a>
+
+          
           </div>
         </div>
       </div>
+      <img id="lupaVermelhaSemBg" src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/f51c4d5629dbb7dd6274bfb2fc5a1202.svg" alt="lupa vermelha" class="w-10 shrink-0">
+    </div>
+
+  </div>
+</section>
+
+
+  <section id="selos" class="py-8 bg-white">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-center items-center gap-10">
+      <div class="text-gray-600"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/494b0112d3cef4417c14b27d431aae08.jpg" class="w-[173px] h-[47px]"></div>
+      <div class="text-gray-600"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/0fc7c98ab5c2af84645a728f6086a157.png" class="w-[137px] h-[47px]"></div>
+      <div class="text-gray-600"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/58571f92b716ff19552ac24e63f109a2.png" class="w-[137px] h-[47px]"></div>
+      <div class="text-gray-600"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/cdb1aff2161b741da43effc75da1ca9b.png" class="w-[137px] h-[47px]"></div>
     </div>
   </section>
 
-  <!-- 10. Selos -->
-  <section class="py-8 bg-white">
-    <div class="max-w-7xl mx-auto flex flex-wrap justify-center gap-10">
-      <div class="text-gray-600"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/494b0112d3cef4417c14b27d431aae08.jpg"></div>
-      <div class="text-gray-600"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/0fc7c98ab5c2af84645a728f6086a157.png"></div>
-      <div class="text-gray-600"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/58571f92b716ff19552ac24e63f109a2.png"></div>
-      <div class="text-gray-600"><img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/cdb1aff2161b741da43effc75da1ca9b.png"></div>
-    </div>
-  </section>
-
-  <!-- 11. Rodapé -->
   <footer class="bg-gray-100 text-black py-6">
     <p class="mt-2 text-center text-[18px] text-black font-bold ">Sabin Medicina Diagnóstica - CNPJ - 00.718.528/0001-09
       <br> <a class="underline">Termos de Consentimento</a> <a class="underline">Política de Privacidade</a> <a class="underline">Mapa do Site</a></p>
   </footer>
 
-  <!-- Scripts -->
   <script src="scripts.js"></script>
 
  
 </body>
 </html>
-                

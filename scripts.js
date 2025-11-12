@@ -44,10 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             for (let i = 0; i < carouselItems.length; i++) {
                 const button = document.createElement('button');
-                button.className = 'pagination-button';
+                button.className = 'w-3 h-3 bg-black rounded-full overflow-hidden cursor-pointer relative transition-[width,border-radius] duration-400 ease';
                 button.setAttribute('role', 'tab');
                 button.setAttribute('aria-label', `Ir para o slide ${i + 1}`);
-                button.innerHTML = '<div class="progress-bar"></div>';
+                button.innerHTML = '<div class="h-full bg-red-500 w-0 rounded-md transition-none"></div>';
                 button.addEventListener('click', () => {
                     goToSlide(i);
                 });
@@ -58,18 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const updatePagination = () => {
                 for (let i = 0; i < paginationButtons.length; i++) {
-                    paginationButtons[i].classList.remove('active');
-                    const progressBar = paginationButtons[i].querySelector('.progress-bar');
-                    progressBar.style.transition = 'width 0s';
-                    progressBar.style.width = '0%';
-
+                    paginationButtons[i].classList.remove('w-10', 'rounded-md');
+                    paginationButtons[i].classList.add('w-3', 'rounded-full');
                     if (i === currentIndex) {
-                        paginationButtons[i].classList.add('active');
-
-                        setTimeout(() => {
-                            progressBar.style.transition = `width ${scrollInterval / 1000}s linear`;
-                            progressBar.style.width = '100%';
-                        }, 50);
+                        paginationButtons[i].classList.remove('w-3', 'rounded-full');
+                        paginationButtons[i].classList.add('w-10', 'rounded-md');
                     }
                 }
             };
@@ -126,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Cria os pontos de paginação
         for (let i = 0; i < totalDots; i++) {
             const dot = document.createElement('button');
-            dot.classList.add('destaque-pagination-dot');
+            dot.className = 'w-3 h-3 rounded-full border-2 border-red-500 bg-transparent cursor-pointer transition-colors duration-300';
             dot.addEventListener('click', () => {
                 carousel.scrollTo({
                     left: i * scrollAmount,
@@ -136,15 +129,15 @@ document.addEventListener('DOMContentLoaded', () => {
             destaquesPaginationContainer.appendChild(dot);
         }
 
-        const dots = destaquesPaginationContainer.querySelectorAll('.destaque-pagination-dot');
+        const dots = destaquesPaginationContainer.querySelectorAll('button');
 
         const updateDestaquesPagination = () => {
             const currentIndex = Math.round(carousel.scrollLeft / scrollAmount);
             dots.forEach((dot, index) => {
                 if (index === currentIndex) {
-                    dot.classList.add('active');
+                    dot.classList.add('bg-red-500');
                 } else {
-                    dot.classList.remove('active');
+                    dot.classList.remove('bg-red-500');
                 }
             });
         };
@@ -183,9 +176,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Atualiza o estado ativo dos botões
                 pageButtons.forEach(btn => {
-                    btn.classList.remove('active');
+                    btn.classList.remove('bg-red-500', 'text-white', 'border-red-500');
+                    btn.classList.add('bg-white', 'hover:bg-gray-100', 'border-gray-300');
                 });
-                button.classList.add('active');
+                button.classList.add('bg-red-500', 'text-white', 'border-red-500');
+                button.classList.remove('bg-white', 'hover:bg-gray-100', 'border-gray-300');
             });
         });
     }
