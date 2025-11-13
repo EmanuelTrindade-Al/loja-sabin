@@ -25,21 +25,8 @@
       },
     }
   </script>
-  <style type="text/tailwindcss">
-    @layer base {
-      input:-webkit-autofill,
-      input:-webkit-autofill:hover,
-      input:-webkit-autofill:focus,
-      input:-webkit-autofill:active {
-        -webkit-text-fill-color: #000;
-        -webkit-box-shadow: 0 0 0px 1000px #fff inset;
-        transition: background-color 5000s ease-in-out 0s;
-      }
-      #destaquesCarousel {
-        scrollbar-width: none; /* Firefox */
-      }
-    }
-  </style>
+  
+
 </head>
 
 <body class="bg-white font-sans">
@@ -58,11 +45,7 @@
 
         <span id="estadoSelecionado" class="font-sans text-[14px]">Brasília - DF</span>
 
-        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-        </svg>
-
-        <select id="seletorDeEstado" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer text-black">
+        <select id="seletorDeEstado" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer text-with bg-black">
           <option selected>Brasília - DF</option>
           <option>Goiás</option>
           <option>Mato Grosso</option>
@@ -1080,8 +1063,8 @@
       <input type="email" placeholder="Seu melhor email"
              class="px-4 py-2 rounded-full border border-gray-300 w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-red-500" />
       <button type="submit"
-              class="bg-red-500 hover:bg-red-600 text-white font-semibold rounded-full px-6 py-2 transition">
-        ASSINAR
+              class="bg-red-500 hover:bg-red-600 text-white font-semibold rounded-full w-[150px] px-6 py-2 transition">
+        ASSINAR <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/481de3b8622cf90d94450f4019359916.svg" alt="seta">
       </button>
     </form>
     <p class="text-xs text-gray-500 mb-12">
