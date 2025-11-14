@@ -7,10 +7,9 @@
   <title>Loja Sabin</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  
   <link href="https://fonts.cdnfonts.com/css/museo-sans-rounded" rel="stylesheet">
+  
   <script src="https://cdn.tailwindcss.com"></script>
   
   <script>
@@ -18,8 +17,8 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Roboto', 'sans-serif'], 
-            museo: ['Museo Sans Rounded', 'serif'], 
+            sans: ['Roboto'], 
+            museo: ['Museo Sans Rounded'], 
           },
         },
       },
@@ -32,21 +31,21 @@
 <body class="bg-white font-sans">
 
   <div id="cablh" class=" relative inset-x-0 bg-white z-40 w-full px-4 font-sans text-[12px] leading-5 h-[44px]">
-    <div class="w-[1108px] mx-auto flex flex-wrap items-center px-0 h-full text-sm text-gray-700 gap-x-20 justify-between">
-      <div class="flex flex-wrap gap-x-[24px]">
+    <div class="w-[1108px] mx-auto flex items-center px-0 h-full text-sm text-gray-700 gap-x-20 justify-between">
+      <div class="flex gap-x-[24px]">
         <a href="https://sabin.com.br/unidade/brasilia-df/" class="text-black hover:text-red-600 text-[12px]">PORTAL SABIN</a>
         <a href="https://laudos.sabin.com.br/shift/lis/sabin/elis/gestao/sabin.portal.login.csp" class="hover:text-red-700 text-[12px]">RESULTADO DE EXAMES</a>
         <a href="https://blog.sabin.com.br/" class="text-black hover:text-red-600 text-[12px]">IR PARA O BLOG</a>
       </div>
 
 
-      <div id="seleEstado" class="relative flex items-center bg-gray-600 border border-gray-600 rounded-full text-white px-4 py-[5px] mt-2 sm:mt-0">
+      <div id="seleEstado" class="relative flex items-center bg-gray-600 border border-gray-600 rounded-full text-white px-4 py-[5px]">
         <span class="font-sans text-[14px] mr-1">Você está em</span>
 
         <span id="estadoSelecionado" class="font-sans text-[14px]">Brasília - DF</span>
 
         <select id="seletorDeEstado" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer text-with bg-black">
-          <option selected>Brasília - DF</option>
+          <option>Brasília - DF</option>
           <option>Goiás</option>
           <option>Mato Grosso</option>
           <option>Mato Grosso do Sul</option>
@@ -79,29 +78,29 @@
     </div>
   </div>
 
-  <section id="topbar" class="sticky top-0 z-50 w-full shadow-none transition-shadow duration-300 h-[80px] border-t border-b px[104px]" style="background-color: rgb(247, 248, 252)">
+  <section id="topbar" class="sticky top-0 z-50 w-full h-[80px] border-t border-b px[104px]" style="background-color: rgb(247, 248, 252)">
 
     <div class="w-full max-w-[1108px] mx-auto h-full flex items-center justify-between">
       <a href="https://loja.sabin.com.br/?___store=brasilia_df" class="flex items-center">
         <img src="https://loja.sabin.com.br/media/favicon/default/Logo_-_vermelha-4k.png" alt="sabin" class="w-[85.33px] h-auto" />
       </a>
 
-      <header class="sticky top-0 z-20 bg-none transition-shadow duration-300">
-        <div class="relative inline-block mx-auto my-2">
+      
+      <div class="relative inline-block mx-auto my-2">
 
-          <input id="buscaCidade" type="text" placeholder="O que você procura?" class="w-[442px] h-[46px] appearance-none rounded-full border border-gray-200 bg-white pl-[20.8px] pr-[80px] pt-2 pb-2 text-base text-black placeholder:text-black shadow-none outline-none focus:outline-none caret-black" style="font-family: 'Museo Sans Rounded', sans-serif;" />
+        <input id="buscaCidade" type="text" placeholder="O que você procura?" class="w-[442px] h-[46px] appearance-none rounded-full border border-gray-200 bg-white pl-[20.8px] pr-[80px] pt-2 pb-2 text-base text-black placeholder:text-black shadow-none outline-none focus:outline-none caret-black" style="font-family: 'Museo Sans Rounded', sans-serif;" />
 
-          <button type="button" aria-label="Buscar" class="absolute right-1 top-1/2 transform -translate-y-1/2 bg-red-500 hover:bg-red-600 text-white w-[49px] h-[39px] rounded-full flex items-center justify-center shadow-sm">
+        <button type="button" aria-label="Buscar" class="absolute right-1 top-1/2 transform -translate-y-1/2 bg-red-500 hover:bg-red-600 text-white w-[49px] h-[39px] rounded-full flex items-center justify-center shadow-sm">
             <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/30bcd5374a562c97bff97bfcf4ae5433.svg" alt="lupa" class="w-[24px] h-[24px]" />
-          </button>
+        </button>
 
-        </div>
-      </header>
+      </div>
+      
 
       <div id="loginCriarConta" class="flex items-center gap-4">
         <div class="text-right">
           <div id="entreCadastro" class="text-sm font-normal uppercase text-black leading-none">ENTRE / CADASTRE-SE</div>
-          <div id="minhaConta" class="text-xs font-normal uppercase text-[#666666] leading-3">MINHA CONTA</div>
+          <div id="minhaConta" class="text-xs font-normal uppercase text-[#666666]">MINHA CONTA</div>
         </div>
 
         <div class="w-7 h-7">
@@ -115,7 +114,7 @@
         <div id="fundo-carrinho-fixo" style="background-color: #ff3b3b; width: 100px; height: 100px; text-align: center; border-radius: 0px 0px 8px 8px; position: relative; left: 1px;" class="mt-5 border-[#ff3b3b]">
           <div style="position: relative; display: inline-block;">
             <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/11a91bad46c265fb5d9e106769ae9508.jpg" alt="Carrinho" style="width: 90px;">
-            <span id="textoCarrinho" style="position: absolute; top: 7px; right: 15px; background: #4a4a4a00; color: white; font-weight: bold; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-family: 'Museo Sans Rounded', sans-serif;">
+            <span id="textoCarrinho" style="position: absolute; top: 7px; right: 15px; background: #4a4a4a00; color: white; font-weight: bold; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-family: sans-serif;">
               0
             </span>
           </div>
@@ -136,7 +135,7 @@
 
     <section class=" w-full max-w-[1108px]">
 
-      <section id="aviso" class="rounded-xlg border border-[#9B51DF] bg-[#ede5f2] flex justify-between items-start md:items-center p-2 md:pr-6 min-h-[75px] h-[138px] relative z-0 md:gap-x-3 mt-8 px-[60px] rounded-lg font-sans">
+      <section id="aviso" class="rounded-xlg border border-[#9B51DF] bg-[#ede5f2] flex justify-between items-start items-center p-2 pr-6 h-[138px] relative z-0 gap-x-3 mt-8 px-[60px] rounded-lg font-sans">
         <div class="flex items-center gap-2 text-gray-900">
           <img id="balaoAviso" src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/0e8af05917ffd98754cd39ef4a4448fd.svg" class="w-[34px] h-[34px]" alt="aviso">
           <p id="textoPrincipal" class=" ml-[5px] text-[#444444] text-base"><strong>Fique atento!</strong><br>
@@ -146,12 +145,10 @@
             Todas as comunicações são feitas exclusivamente por meio de nossos canais oficiais.</p>
         </div>
 
-        <div class="flex items-center gap-2 shrink-0">
-          <p class="text-sm font-medium text-gray-700"><strong> Fechar</strong></p>
-          <button id="fecharAviso" class="w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-colors" aria-label="Fechar aviso">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+        <div class="flex items-center gap-2">
+          <p class="text-sm text-gray-700"><strong> Fechar</strong></p>
+          <button id="fecharAviso" class="w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-colors">
+           <span>X</span>
           </button>
         </div>
       </section>
@@ -159,28 +156,24 @@
       <section id="carrosselsimples" class="relative bg-white flex items-center gap-6 h-[250px] mb-6 mt-4">
         <div id="carrosselContainer" class="flex gap-6 overflow-hidden h-[250px] rounded-2xl scroll-smooth no-scrollbar">
           <div id="img0carro" class="carousel-item w-[700px] h-[250px] bg-gray-100 rounded-lg shrink-0 overflow-hidden">
-            <img src="https://loja.sabin.com.br/media/banners/_/b/_banner_loja_tablet_1108x358px.jpg" alt="corrida" class="w-full h-full object-cover object-center">
+            <img src="https://loja.sabin.com.br/media/banners/_/b/_banner_loja_tablet_1108x358px.jpg" alt="corrida" class="w-full h-full object-cover ">
           </div>
           <div id="img1carro" class="carousel-item w-[700px] h-[250px] bg-gray-100 rounded-lg shrink-0 overflow-hidden">
-            <img src="https://loja.sabin.com.br/media/banners/b/a/banner_1__1.jpg" alt="prevensão" class="w-full h-full object-cover object-center">
+            <img src="https://loja.sabin.com.br/media/banners/b/a/banner_1__1.jpg" alt="prevensão" class="w-full h-full object-cover ">
           </div>
           <div id="img2carro" class="carousel-item w-[700px] h-[250px] bg-gray-100 rounded-lg shrink-0 overflow-hidden">
-            <img src="https://loja.sabin.com.br/media/banners/a/r/arexvy_tablete__1108x358__3.png" alt="Vacina" class="w-full h-full object-cover object-center">
+            <img src="https://loja.sabin.com.br/media/banners/a/r/arexvy_tablete__1108x358__3.png" alt="Vacina" class="w-full h-full object-cover">
           </div>
           <div id="img3carro" class="carousel-item w-[700px] h-[250px] bg-gray-100 rounded-lg shrink-0 overflow-hidden">
-            <img src="https://loja.sabin.com.br/media/banners/b/a/banner_hz_setembro_mobile_-_576_x_290px_2.jpg" alt="Banner Setembro" class="w-full h-full object-cover object-center">
+            <img src="https://loja.sabin.com.br/media/banners/b/a/banner_hz_setembro_mobile_-_576_x_290px_2.jpg" alt="Banner Setembro" class="w-full h-full object-cover">
           </div>
           <div id="img4carro" class="carousel-item w-[700px] h-[250px] bg-gray-100 rounded-lg shrink-0 overflow-hidden">
-            <img src="https://loja.sabin.com.br/media/banners/i/n/infus_o_banner_loja_tablet.jpg" alt="Infusão Banner" class="w-full h-full object-cover object-center">
+            <img src="https://loja.sabin.com.br/media/banners/i/n/infus_o_banner_loja_tablet.jpg" alt="Infusão Banner" class="w-full h-full object-cover">
           </div>
 
         </div>
 
-
-        <div id="carousel-pagination" class="absolute bottom-4 left-4 flex gap-2 z-10">
-        </div>
-
-        <a id="ficouMaisFacil" href="https://loja.sabin.com.br/entre?onboarding=true" class="w-[384px] h-[250px] shrink-0 bg-red-50 rounded-2xl flex flex-col justify-center items-center text-red-700 hover:bg-red-100 transition">
+        <a id="ficouMaisFacil" href="https://loja.sabin.com.br/entre?onboarding=true" class="w-[384px] h-[250px] shrink-0 bg-red-50 rounded-2xl flex justify-center items-center text-red-700">
           <img src="https://loja.sabin.com.br/media/sabin_budgets/stores/1/upload_desktop.png" alt="Crie sua conta Sabin" class="w-full h-full object-cover rounded-2xl">
 
         </a>
@@ -194,7 +187,7 @@
         </div>
 
         <section id="vocePrecisa" class="">
-          <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-0 position-relative">
+          <div class="max-w-7xl mx-auto grid grid-cols-1 grid-cols-4 gap-6 px-0 position-relative">
 
             <div id="vacinas" class="relative h-auto rounded-xl shadow-md hover:-translate-y-2 hover:shadow-2xl transition flex items-center justify-center overflow-hidden ">
               <img src="https://loja.sabin.com.br/media/widgetsimages/v/a/vacinas.png" class="w-full rounded-xl h-[110px]">
@@ -242,7 +235,7 @@
           </h2>
 
 
-          <div id="destaquesCarousel" class="flex gap-6 overflow-x-auto px-[40px] no-scrollbar" style="height: 200px; width: 1070px; position: relative;">
+          <div id="destaquesCarousel" class="flex gap-6 overflow-x-auto px-[40px]" style="height: 200px; width: 1070px; position: relative;">
 
             <div id="destaque1" class="relative w-[234px] h-[180px] bg-white rounded-lg shadow-sm p-5 flex flex-col justify-between items-center shrink-0">
               <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
@@ -385,23 +378,15 @@
             </div>
           </div>
 
-          <div id="destaquesPagination" class="flex justify-center items-center gap-2 pt-4"></div>
 
           <button id="prevButton" class="absolute bg-white rounded-full p-2 shadow-md hover:bg-gray-100" style="left: -43px; top: 55%; transform: translateY(-50%);">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
+            <span><</span>
           </button>
           <button id="nextButton" class="absolute bg-white rounded-full p-2 shadow-md hover:bg-gray-100" style="right: -43px; top: 55%; transform: translateY(-50%);">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
+            <span>></span>
           </button>
         </div>
     </section>
-
-
-
 
       <section class="bg-gray-50">
         <div class="flex flex-col lg:flex-row gap-6 px-4">
@@ -599,11 +584,11 @@
               </div>
             </div>
 
-            <div id="ofertas-page-2" class="ofertas-page hidden">
+            <div id="ofertas-page-2" class="hidden">
               <div class="grid grid-cols-3 gap-6">
 
-                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center">
                     <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
                   <div class="px-4 pt-12 pb-4 text-center">
@@ -621,8 +606,8 @@
                   </div>
                 </div>
 
-                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center">
                     <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
                   <div class="px-4 pt-12 pb-4 text-center">
@@ -640,8 +625,8 @@
                   </div>
                 </div>
 
-                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center">
                     <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
                   <div class="px-4 pt-12 pb-4 text-center">
@@ -659,8 +644,8 @@
                   </div>
                 </div>
 
-                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center">
                     <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
                   <div class="px-4 pt-12 pb-4 text-center">
@@ -678,8 +663,8 @@
                   </div>
                 </div>
 
-                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center">
                     <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
                   <div class="px-4 pt-12 pb-4 text-center">
@@ -698,7 +683,7 @@
                 </div>
 
                 <div class="relative bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition">
-                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center" style="top: 0px; left: 0px;">
+                  <div class="absolute w-[36px] h-[36px] bg-gray-100 rounded-tl-lg rounded-br-lg flex items-center justify-center">
                     <img src="https://loja.sabin.com.br/skin/frontend/sabin/default/release/775b0ad4036e05f25346268a2f26b13e.svg" alt="laboratorio vermelho" class="w-5 h-5">
                   </div>
                   <div class="px-4 pt-12 pb-4 text-center">

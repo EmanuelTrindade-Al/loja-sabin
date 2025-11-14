@@ -1,6 +1,5 @@
 
 
-    // CONTROLA FECHAMENTO DO AVISO
     const avisoSection = document.getElementById('aviso');
     const fecharButton = document.getElementById('fecharAviso');
 
